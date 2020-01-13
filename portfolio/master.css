@@ -1,11 +1,12 @@
 h1 h2 h3 h4 h5 h6 {
   font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
+  text-align: center;
   font-size: 50px;
   line-height: 70px;
 }
 
-p {
-  font-family: 'Goudy Bookletter 1911', 'Helvetica', 'Arial' sans-serif;
+p, li {
+  font-family: 'Goudy Bookletter 1911', 'Helvetica', 'Arial' sans-serif;]
   font-size: 15px;
   line-height: 25px;
 }
@@ -50,11 +51,16 @@ Highlighted Dark Blue #000099
   text-decoration: none;
 }
 
-.navbar a:hover, .navbar li a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover, .navbar li a:hover, .dropbtn:hover {
   background-color: #000099;
 }
 
-.navbar li.dropdown {
+
+.dropbtn:hover .dropdown-content {
+  display: block;
+}
+
+.navbar li.dropdown-menus {
   display: inline-block;
 }
 
@@ -77,8 +83,4 @@ Highlighted Dark Blue #000099
 
 .dropdown-content a:hover {
   background-color: grey;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
