@@ -16,7 +16,7 @@ p {
   font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
 }
 
-.navbar a {
+.navbar > a {
   float: left;
   font-size: 16px;
   color: white;
@@ -25,47 +25,58 @@ p {
   text-decoration: none;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  display: block;
+/* Colors
+Dark Blue #000066
+Highlighted Dark Blue #000099
+*/
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover, .navbar li a:hover, .dropdown:hover .dropbtn {
   background-color: #000099;
 }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: #000066;
-  font-family: inherit;
-  margin: 0;
+.navbar li.dropdown {
+  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9f9;
-  min-width: 120px;
+  background-color: #f9f9f9;
+  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  float: none;
   color: black;
-  padding: 12px 16px;
+  padding: 12px 8px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: grey;
 }
 
 .dropdown:hover .dropdown-content {
