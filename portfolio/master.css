@@ -55,22 +55,21 @@ Highlighted Dark Blue #000099
   background-color: #000099;
 }
 
-
-.dropbtn:hover .dropdown-content {
-  display: block;
-}
-
-.navbar li.dropdown-menus {
-  display: inline-block;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 120px;
+  min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: auto;
+}
+
+.labs-dropdown:hover .dropdown-content, .projects-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar li.dropdown-menus, .navbar > a, .navbar > div, .dropdown-menus > div {
+  display: inline-block;
 }
 
 .dropdown-content a {
@@ -79,8 +78,11 @@ Highlighted Dark Blue #000099
   text-decoration: none;
   display: block;
   text-align: left;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000066;
 }
 
 .dropdown-content a:hover {
-  background-color: grey;
+  background-color: #9999ff;
 }
