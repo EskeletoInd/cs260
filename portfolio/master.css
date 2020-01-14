@@ -11,47 +11,31 @@ p, li {
   line-height: 25px;
 }
 
+/* Colors
+Dark Blue #000066
+Highlighted Dark Blue #000099
+*/
+
 .navbar {
   overflow: hidden;
   background-color: #000066;
   font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
 }
 
-.navbar > a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Colors
-Dark Blue #000066
-Highlighted Dark Blue #000099
-*/
-
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-.navbar li {
+.navbar-item-link {
   float: left;
 }
 
-.navbar li a, .dropbtn {
+.navbar-item {
   display: inline-block;
   color: white;
+  font-size: 16px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-.navbar a:hover, .navbar li a:hover, .dropbtn:hover {
+.navbar-item:hover {
   background-color: #000099;
 }
 
@@ -68,7 +52,7 @@ Highlighted Dark Blue #000099
   display: block;
 }
 
-.navbar li.dropdown-menus, .navbar > a, .navbar > div, .dropdown-menus > div {
+.dropdown-menus > div {
   display: inline-block;
 }
 
