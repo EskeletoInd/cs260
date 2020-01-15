@@ -7,6 +7,11 @@ img {
   width: 30px;
 }
 
+h1, h2, h3, p {
+  text-align: center;
+  font-family: 'Baskervville', serif;
+}
+
 /* Box-sizing reset: //w3bits.com/?p=3225 */
 html {
   box-sizing: border-box;
