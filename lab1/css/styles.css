@@ -21,6 +21,17 @@ html {
   box-sizing: inherit;
 }
 
+.photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.showcase-photo:hover {
+  width: 150%;
+}
+
 .masonry {
   transition: all .5s ease-in-out;
   column-gap: 30px;
