@@ -93,27 +93,22 @@ Highlighted Dark Blue #000099
   background-color: #9999ff;
 }
 
-.page {
-  display: flex;
-  flex-direction:row;
-  justify-content:space-around;
-  overflow: hidden;
-}
-
 .page-section {
-  width: 800px
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-@@media only screen and (max-width: 400px) {
-  body {
-    background-color: red;
-    overflow: hidden;
+@media only screen and (max-width: 480px) {
+  h1 h2 h3 h4 h5 h6 {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    text-align: center;
+    font-size: 30px;
+    line-height: 70px;
   }
-}
 
-@@media only screen and (min-width: 401px) {
-  body {
-    background-color: blue;
-    overflow: hidden;
+  p, li {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 12px;
+    line-height: 25px;
   }
 }
