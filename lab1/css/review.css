@@ -1,0 +1,47 @@
+.avatar, .avatar img, .username, .comment, .review {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review {
+  width: 600px;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.avatar {
+  float: left;
+  width: 120px;
+  height: 120px;
+  margin: 25px;
+  border-radius: 30px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%
+}
+
+.username {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+.comment {
+  margin: 10px;
+  overflow: hidden;
+  font-size: 16px;
+}

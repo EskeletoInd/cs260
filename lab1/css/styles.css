@@ -2,6 +2,18 @@ img {
   width: 100%;
 }
 
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.navbar {
+  flex-grow: 0;
+}
+
 .logo {
   width: 30px;
   width: 30px;
@@ -132,18 +144,23 @@ html {
   /*overflow: hidden;*/
 }
 
-.page {
+.content {
   overflow: hidden;
   margin: 0 auto;
+  flex-grow: 1;
+  overflow: auto;
+  padding-bottom: 50px;
 }
 
 .footer {
+  position: relative;
   clear: both;
   height: 50px;
   display: flex;
   background-color: grey;
   justify-content: center;
   align-items: center;
+  flex-grow: 0;
 }
 
 .footer a {
