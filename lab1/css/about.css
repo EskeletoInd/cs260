@@ -1,0 +1,11 @@
+#aboutmehancock {
+  width: 70%;
+}
+
+.picture-and-text {
+  margin-left: 350px;
+  margin-right: 350px;
+  display: flex;
+  flex-direction: row;
+
+}
