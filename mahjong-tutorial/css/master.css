@@ -1,0 +1,29 @@
+/* Styling for the Footer */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-container {
+  padding-bottom: 2.5rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #343a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-url a {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+/* End of Footer Stylings */

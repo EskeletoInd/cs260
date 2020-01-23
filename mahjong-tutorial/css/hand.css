@@ -8,7 +8,6 @@
 .hand img {
   display: inline-block;
   margin: 0px;
-  padding: 0px;
 }
 
 /* Tiles within the Hand */
@@ -19,7 +18,14 @@
 
 /* Called Tiles */
 .handCalledContainer {
-  margin-left: 10px;
+  margin-left: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.handCalled {
+  width: auto;
+  margin-left: 4px;
 }
 
 .handCalled img {
@@ -27,8 +33,11 @@
 }
 
 .calledtile {
-  width: auto;
-  transform: rotate(90deg);
-  padding-right: 8px;
+  padding-right: 12px;
+  transform: rotate(-90deg);
+}
 
+/* Container For Winning Tile */
+.winningTileContainer {
+  margin-left: 10px;
 }
