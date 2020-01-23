@@ -1,0 +1,34 @@
+/* For Holding a Hand of Tiles */
+.hand {
+  display: flex;
+  font-size: 0px;
+  margin-left: 16px;
+}
+
+.hand img {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Tiles within the Hand */
+.handInHand {
+  font-size: inherit;
+  display: flex;
+}
+
+/* Called Tiles */
+.handCalledContainer {
+  margin-left: 10px;
+}
+
+.handCalled img {
+  float: left;
+}
+
+.calledtile {
+  width: auto;
+  transform: rotate(90deg);
+  padding-right: 8px;
+
+}
