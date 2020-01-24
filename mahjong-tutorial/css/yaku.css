@@ -1,0 +1,32 @@
+.content-container {
+  align-items: center;
+}
+
+table, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  width: 75%;
+}
+
+td {
+  padding: 10px;
+}
+
+th {
+  text-align: center;
+}
+
+table tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+table tr:nth-child(even) {
+  background-color: #343a40;
+}
+
+td > .hand {
+  justify-content: center;
+}

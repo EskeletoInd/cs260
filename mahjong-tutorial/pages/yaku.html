@@ -6,51 +6,743 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="/css/master.css">
-    <link rel="stylesheet" href="/css/hand.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/yaku.css">
+    <link rel="stylesheet" href="css/hand.css">
     <title>Yaku</title>
   </head>
   <body>
     <div class="page">
       <div class="content-container">
         <div id="navbar-placeholder"></div>
+        <h2>One Han Closed Only</h2>
+        <table>
+          <tr>
+            <td>Menzenchin tsumohou<br>Closed Only</td>
+            <td>This yaku may apply to any closed hand. Any player who draws a winning tile with a closed hand is awarded this yaku.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Riichi<br>Closed Only</td>
+            <td>This is a special yaku applied to closed tenpai hands, which requires the player to make a declaration and "wager".</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Ippatsu<br>Closed Only</td>
+            <td>This is applied when the player calling riichi wins within 4 tile draws/discards. In addition, the cycle must not be interrupted by tile calls.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>All Sequences<br>Closed Only</td>
+            <td>Or Pinfu, this is a hand that does not gain fu based on composition, other than that of a closed ron.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-4p.png">
+                  <img src="/images/tiles/Tiles-5p.png">
+                  <img src="/images/tiles/Tiles-5p.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-2m.png">
+                  <img src="/images/tiles/Tiles-3m.png">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-7s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-6s.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Pure Double Chi<br>Closed Only</td>
+            <td>Or Iipikou, This hand includes two identical sequences.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-4p.png">
+                  <img src="/images/tiles/Tiles-4p.png">
+                  <img src="/images/tiles/Tiles-5p.png">
+                  <img src="/images/tiles/Tiles-5p.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-        <div class="hand">
-          <div class="handInHand">
-            <img src="/images/tiles/Tile-1p.png">
-            <img src="/images/tiles/Tile-2p.png">
-            <img src="/images/tiles/Tile-3p.png">
-            <img src="/images/tiles/Tile-4p.png">
-            <img src="/images/tiles/Tile-5p.png">
-            <img src="/images/tiles/Tile-6p.png">
-            <img src="/images/tiles/Tile-7p.png">
-            <img src="/images/tiles/Tile-8p.png">
-            <img src="/images/tiles/Tile-9p.png">
-          </div>
-          <div class="handCalledContainer">
-            <div class="handCalled">
-              <img src="/images/tiles/Tile-9m.png" class="calledtile">
-              <img src="/images/tiles/Tile-9m.png">
-              <img src="/images/tiles/Tile-9m.png">
-            </div>
-            <div class="handCalled">
-              <img src="/images/tiles/Tile-9m.png" class="calledtile">
-              <img src="/images/tiles/Tile-9m.png">
-              <img src="/images/tiles/Tile-9m.png">
-            </div>
-            <div class="winningTileContainer">
-              <img src="/images/tiles/Tile-9m.png">
-            </div>
-          </div>
-        </div>
+        <h2>One Han</h2>
+
+        <table>
+          <tr>
+            <td>Last Draw<br>May be open</td>
+            <td>The hand is completed with the last tile on the wall.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Last Discard<br>May be open</td>
+            <td>The hand is completed with the last discarded tile.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Kaihou<br>May be open</td>
+            <td>Awarded to a player upon winning with a tile from the dead wall.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Robbing a Kan<br>May be open</td>
+            <td>or Chankan, The winning tile for a hand is called on another player's Kan. Essentially, the tile needed to complete a Kan is stolen to complete a winning hand.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>All Simples<br>May be open</td>
+            <td>A hand without terminals or honor tiles.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-2p.png">
+                  <img src="/images/tiles/Tiles-2p.png">
+                  <img src="/images/tiles/Tiles-2p.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-2m.png">
+                  <img src="/images/tiles/Tiles-3m.png">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-7s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-6s.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Round Wind Triplet<br>May be open</td>
+            <td>A hand with a meld of the round wind.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-we.png">
+                  <img src="/images/tiles/Tiles-we.png">
+                  <img src="/images/tiles/Tiles-we.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Seat Wind Triplet<br>May be open</td>
+            <td>A hand with a meld of a players wind.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-ws.png">
+                  <img src="/images/tiles/Tiles-ws.png">
+                  <img src="/images/tiles/Tiles-ws.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Dragon Triplet<br>May be open</td>
+            <td>A hand with a meld of dragons.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <h2>Two Han</h2>
+
+        <table>
+          <tr>
+            <td>Double Riichi<br>Closed Only</td>
+            <td>Riichi is declared with a dealt hand before the first discard.</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Outside Hand<br>May be open; Loses 1 han</td>
+            <td>All tile groups contain at least 1 terminal or honor.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-2p.png">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-8p.png">
+                  <img src="/images/tiles/Tiles-9p.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-3s.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-dg.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Triple Chi - Sanshoku doujun<br>May be open; Loses 1 han</td>
+            <td>Three sequences have the same number across the three different suits.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-3m.png">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-4p.png">
+                  <img src="/images/tiles/Tiles-5p.png">
+                  <img src="/images/tiles/Tiles-3s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-ws.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-ws.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Pure Straight<br>May be open; Loses 1 han</td>
+            <td>Or Ittsu, This hand has a complete sequence of 1 through 9 of a single suit. As a note, the sequence of 1-9 are actually three groups of sequences numbered 123, 456, and 789.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-3s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-6s.png">
+                  <img src="/images/tiles/Tiles-7s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>All Pon - Toi Toi<br>May be open</td>
+            <td>The entire hand is composed of triplets.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="handCalled">
+                    <img src="/images/tiles/Tiles-dr.png" class="calledtile">
+                    <img src="/images/tiles/Tiles-dr.png">
+                    <img src="/images/tiles/Tiles-dr.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Three Concealed Pon - Shanankou<br>May be open</td>
+            <td>The hand includes three groups of triplets (or closed quads) that have been formed without calling any tiles. The fourth group can be an open triplet or sequence.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Triple Pon - Sanshoku doukou<br>May be open</td>
+            <td>The hand includes three groups of triplets with the same number.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Three Concealed Pon - Sanankou<br>May be open</td>
+            <td>The hand includes three groups of triplets (or closed quads) that have been formed without calling any tiles. The fourth group can be an open triplet or sequence.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Triple Kan - Sankantsu<br>May be open</td>
+            <td>This hand includes three Kans.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-2p.png">
+                  <img src="/images/tiles/Tiles-3p.png">
+                  <img src="/images/tiles/Tiles-4p.png">
+                  <img src="/images/tiles/Tiles-we.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="handCalled">
+                    <img src="/images/tiles/Tiles-6p.png">
+                    <img src="/images/tiles/Tiles-6p.png">
+                    <img src="/images/tiles/Tiles-6p.png">
+                    <img src="/images/tiles/Tiles-6p.png" class="calledtile">
+                  </div>
+                  <div class="handCalled">
+                    <img src="/images/tiles/Tiles-7s.png" class="calledtile">
+                    <img src="/images/tiles/Tiles-7s.png">
+                    <img src="/images/tiles/Tiles-7s.png">
+                    <img src="/images/tiles/Tiles-7s.png">
+                  </div>
+                  <div class="handCalled">
+                    <img src="/images/tiles/Tiles-unknown.png">
+                    <img src="/images/tiles/Tiles-1m.png">
+                    <img src="/images/tiles/Tiles-1m.png">
+                    <img src="/images/tiles/Tiles-unknown.png">
+                  </div>
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-we.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Seven Pairs - Chiitoitsu<br>Closed only</td>
+            <td>This hand is composed of seven pairs. It is one of two exceptions to the standard 4 melds and a pair pattern.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-6m.png">
+                  <img src="/images/tiles/Tiles-6m.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-ws.png">
+                  <img src="/images/tiles/Tiles-ww.png">
+                  <img src="/images/tiles/Tiles-ww.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-ws.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>All Terminals and Honors - Honroutou<br>May be open</td>
+            <td>The hand is composed of nothing but terminals and honors.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-9m.png">
+                  <img src="/images/tiles/Tiles-9m.png">
+                  <img src="/images/tiles/Tiles-9m.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-ww.png">
+                </div>
+                <div class="handCalledContainer">
+                  <div class="handCalled">
+                    <img src="/images/tiles/Tiles-dr.png">
+                    <img src="/images/tiles/Tiles-dr.png">
+                    <img src="/images/tiles/Tiles-dr.png">
+                  </div>
+                  <div class="winningTileContainer">
+                    <img src="/images/tiles/Tiles-ww.png">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Little Three Dragons - Shousangen<br>May be open</td>
+            <td>The hand contains two sets of 3 dragon tiles and a pair of the third dragon tiles.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dw.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-dg.png">
+                  <img src="/images/tiles/Tiles-dr.png">
+                  <img src="/images/tiles/Tiles-dr.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                  <img src="/images/tiles/Tiles-unknown.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <h2>Three Han</h2>
+
+        <table>
+          <tr>
+            <td>Half Flush - Honitsu<br>May be open; Loses 1 Han</td>
+            <td>This is a single suit hand mixed with some honor tiles.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1m.png">
+                  <img src="/images/tiles/Tiles-2m.png">
+                  <img src="/images/tiles/Tiles-3m.png">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-6m.png">
+                  <img src="/images/tiles/Tiles-7m.png">
+                  <img src="/images/tiles/Tiles-7m.png">
+                  <img src="/images/tiles/Tiles-7m.png">
+                  <img src="/images/tiles/Tiles-ws.png">
+                  <img src="/images/tiles/Tiles-wn.png">
+                  <img src="/images/tiles/Tiles-wn.png">
+                  <img src="/images/tiles/Tiles-wn.png">
+                </div>
+                <div class="winningTileContainer">
+                  <img src="/images/tiles/Tiles-ws.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Terminals In All Groups - Junchan Taiyao<br>May be open; Loses 1 Han</td>
+            <td>All melds contain at least one terminal.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-7m.png">
+                  <img src="/images/tiles/Tiles-8m.png">
+                  <img src="/images/tiles/Tiles-9m.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-1p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-8p.png">
+                  <img src="/images/tiles/Tiles-9p.png">
+                  <img src="/images/tiles/Tiles-7s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                </div>
+                <div class="winningTileContainer">
+                  <img src="/images/tiles/Tiles-9s.png"
+
+
+                  >
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Twice Pure Double Chi - Ryanpeikou<br>Closed Only</td>
+            <td>This hand has two sets of "iipeikou". This hand does not combine with chii toitsu, even though the hand can be interpreted as one.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-4m.png">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-5m.png">
+                  <img src="/images/tiles/Tiles-6m.png">
+                  <img src="/images/tiles/Tiles-6m.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-6p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-7p.png">
+                  <img src="/images/tiles/Tiles-8p.png">
+                  <img src="/images/tiles/Tiles-8p.png">
+                  <img src="/images/tiles/Tiles-we.png">
+                </div>
+                <div class="winningTileContainer">
+                  <img src="/images/tiles/Tiles-we.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <h2>Six Han</h2>
+
+        <table>
+          <tr>
+            <td>Full Flush - Chinitsu<br>May be open; Loses 1 Han</td>
+            <td>This hand is composed entirely of tiles from only one of the three suits.</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="hand">
+                <div class="handInHand">
+                  <img src="/images/tiles/Tiles-1s.png">
+                  <img src="/images/tiles/Tiles-2s.png">
+                  <img src="/images/tiles/Tiles-3s.png">
+                  <img src="/images/tiles/Tiles-3s.png">
+                  <img src="/images/tiles/Tiles-4s.png">
+                  <img src="/images/tiles/Tiles-5s.png">
+                  <img src="/images/tiles/Tiles-6s.png">
+                  <img src="/images/tiles/Tiles-6s.png">
+                  <img src="/images/tiles/Tiles-6s.png">
+                  <img src="/images/tiles/Tiles-6s.png">
+                  <img src="/images/tiles/Tiles-7s.png">
+                  <img src="/images/tiles/Tiles-8s.png">
+                  <img src="/images/tiles/Tiles-9s.png">
+                </div>
+                <div class="winningTileContainer">
+                  <img src="/images/tiles/Tiles-9s.png">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <h2>Yakuman</h2>
+
       </div>
       <div id="footer-placeholder"></div>
     </div>
 
     <script>
     $(function(){
-      $("#footer-placeholder").load("/footer.html");
-      $("#navbar-placeholder").load("/nav.html");});
+      $("#footer-placeholder").load("footer.html");
+      $("#navbar-placeholder").load("nav.html");});
     </script>
   </body>
 </html>
