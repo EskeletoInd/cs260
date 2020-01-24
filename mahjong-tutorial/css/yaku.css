@@ -8,7 +8,10 @@ table, td {
 }
 
 table {
+  margin-top: 16px;
+  margin-bottom: 8px;
   width: 75%;
+  table-layout: fixed;
 }
 
 td {
@@ -29,4 +32,8 @@ table tr:nth-child(even) {
 
 td > .hand {
   justify-content: center;
+}
+
+.yakuFirstRow {
+  width: 30%;
 }
