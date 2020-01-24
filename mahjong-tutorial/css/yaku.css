@@ -1,5 +1,7 @@
-.content-container {
+.yakuContainer {
+  display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 table, td {
@@ -34,6 +36,6 @@ td > .hand {
   justify-content: center;
 }
 
-.yakuFirstRow {
-  width: 30%;
+.yakuName {
+  width: 22%;
 }
