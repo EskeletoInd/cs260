@@ -1,0 +1,39 @@
+
+.content-container {
+
+}
+
+h2  {
+  margin-top: 64px;
+  margin-bottom: 48px;
+  font-size: 40px;
+}
+
+.column-container {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.column-image {
+  padding: 80px 80px 80px 80px;
+}
+
+.column-image img {
+  width: 50vh;
+}
+
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: black;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  width: 100%;
+}
+
+.column-header {
+  margin-left: 22px;
+}
