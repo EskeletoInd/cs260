@@ -8,151 +8,224 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="/css/master.css">
     <link rel="stylesheet" href="/css/hand.css">
+    <link rel="stylesheet" href="/css/rules.css">
     <title>Basic Mahjong Rules</title>
   </head>
   <body>
     <div id="navbar-placeholder"></div>
     <div class="page">
       <div class="content-Container">
+
         <h1>Basic Rules of Mahjong</h1>
-        <h2>Tiles and Suits</h2>
-        <ul>
-          <li>3 Numbered Suits (1-9)
-            <ul>
-              <li>The Dot or Pin Tiles
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-1p.png">
-                    <img src="/images/tiles/Tile-2p.png">
-                    <img src="/images/tiles/Tile-3p.png">
-                    <img src="/images/tiles/Tile-4p.png">
-                    <img src="/images/tiles/Tile-5p.png">
-                    <img src="/images/tiles/Tile-6p.png">
-                    <img src="/images/tiles/Tile-7p.png">
-                    <img src="/images/tiles/Tile-8p.png">
-                    <img src="/images/tiles/Tile-9p.png">
-                  </div>
-                </div>
-              </li>
-              <li>The Bamboo or Sou Tiles
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-1s.png">
-                    <img src="/images/tiles/Tile-2s.png">
-                    <img src="/images/tiles/Tile-3s.png">
-                    <img src="/images/tiles/Tile-4s.png">
-                    <img src="/images/tiles/Tile-5s.png">
-                    <img src="/images/tiles/Tile-6s.png">
-                    <img src="/images/tiles/Tile-7s.png">
-                    <img src="/images/tiles/Tile-8s.png">
-                    <img src="/images/tiles/Tile-9s.png">
-                  </div>
-                </div>
-              </li>
-              <li>The Character or Man Tiles
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-1m.png">
-                    <img src="/images/tiles/Tile-2m.png">
-                    <img src="/images/tiles/Tile-3m.png">
-                    <img src="/images/tiles/Tile-4m.png">
-                    <img src="/images/tiles/Tile-5m.png">
-                    <img src="/images/tiles/Tile-6m.png">
-                    <img src="/images/tiles/Tile-7m.png">
-                    <img src="/images/tiles/Tile-8m.png">
-                    <img src="/images/tiles/Tile-9m.png">
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>The Honor Tiles
-            <ul>
-              <li>East, South, West and North Wind Tiles
-                <div class="hand">
-                    <div class="handInHand">
-                      <img src="/images/tiles/Tile-we.png">
-                      <img src="/images/tiles/Tile-ws.png">
-                      <img src="/images/tiles/Tile-ww.png">
-                      <img src="/images/tiles/Tile-wn.png">
-                    </div>
-                </div>
-              </li>
-              <li>White, Green and Red Dragon Tiles
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-dw.png">
-                    <img src="/images/tiles/Tile-dg.png">
-                    <img src="/images/tiles/Tile-dr.png">
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>Four copies of each tile</li>
-          <li>Total of 136 tiles</li>
-        </ul>
-        <h2>Setup</h2>
-        <ul>
-          <li>Each player starts with 25,000 points</li>
-          <li>Each player creates a wall of 17x2 tiles</li>
-          <li>These walls become the draw pile</li>
-          <li>The dealer will then roll the dice to decide where to split the wall</li>
-          <li>The 7x2 Tiles to the left of the split becomes the dead wall</li>
-          <li>After the wall break, players take turns drawing tiles until they have 13 tiles</li>
-          <li>These are the players starting hands</li>
-        </ul>
-        </p>
-        <h2>Seating Positions</h2>
-        <ul>
-          <li>The Dealer is always seated as the east wind</li>
-          <li>Winds are then assigned counter clockwise in the pattern East, South, West, North</li>
-          <li>The turn order moves counter clockwise, with the dealer getting the first draw and discard</li>
-        </ul>
-        <h2>Objective</h2>
-        <ul>
-          <li>The Objective of the game is to complete your hand before anyone else</li>
-          <li>While players avoid playing into each other's hands</li>
-          <li>A complete hand is composed of three <em>melds</em> and a pair.</li>
-          <li>A meld either of the following:
-            <ul>
-              <li>
-                A Set
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-8s.png">
-                    <img src="/images/tiles/Tile-8s.png">
-                    <img src="/images/tiles/Tile-8s.png">
-                  </div>
-                </div>
-              </li>
-              <li>
-                A Run
-                <div class="hand">
-                  <div class="handInHand">
-                    <img src="/images/tiles/Tile-1m.png">
-                    <img src="/images/tiles/Tile-2m.png">
-                    <img src="/images/tiles/Tile-3m.png">
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>A legal hand must have one or more Han to be worth any points</li>
-          <li>You can see legal Han on the <a href="/pages/yaku.html">Han/Yaku</a>page</li>
-          <li>Two Different ways to declare a win:
-            <ul>
-              <li>Tsumo: Winning off a teal that you drew from the Wall</li>
-              <li>Ron: Winning off an opponents discard</li>
-            </ul>
-          </li>
-        </ul>
-        <h2>Round Maintence</h2>
-        <ul>
-          <li>After each round points are distrubed to the player who completed their hand</li>
-          <li>Different hands are worth different amounts of points</li>
-          <li>Points are exchanged and tiles shuffled</li>
-        </ul>
+
+        <hr>
+
+        <div class="column-container">
+          <div class="column-text">
+            <div class="column-header">
+              <h2>Tiles and Suits</h2>
+            </div>
+            <div class="column-description">
+              <ul>
+                <li>3 Numbered Suits (1-9)
+                  <ul>
+                    <li>The Dot or Pin Tiles
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-1p.png">
+                          <img src="/images/tiles/Tile-2p.png">
+                          <img src="/images/tiles/Tile-3p.png">
+                          <img src="/images/tiles/Tile-4p.png">
+                          <img src="/images/tiles/Tile-5p.png">
+                          <img src="/images/tiles/Tile-6p.png">
+                          <img src="/images/tiles/Tile-7p.png">
+                          <img src="/images/tiles/Tile-8p.png">
+                          <img src="/images/tiles/Tile-9p.png">
+                        </div>
+                      </div>
+                    </li>
+                    <li>The Bamboo or Sou Tiles
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-1s.png">
+                          <img src="/images/tiles/Tile-2s.png">
+                          <img src="/images/tiles/Tile-3s.png">
+                          <img src="/images/tiles/Tile-4s.png">
+                          <img src="/images/tiles/Tile-5s.png">
+                          <img src="/images/tiles/Tile-6s.png">
+                          <img src="/images/tiles/Tile-7s.png">
+                          <img src="/images/tiles/Tile-8s.png">
+                          <img src="/images/tiles/Tile-9s.png">
+                        </div>
+                      </div>
+                    </li>
+                    <li>The Character or Man Tiles
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-1m.png">
+                          <img src="/images/tiles/Tile-2m.png">
+                          <img src="/images/tiles/Tile-3m.png">
+                          <img src="/images/tiles/Tile-4m.png">
+                          <img src="/images/tiles/Tile-5m.png">
+                          <img src="/images/tiles/Tile-6m.png">
+                          <img src="/images/tiles/Tile-7m.png">
+                          <img src="/images/tiles/Tile-8m.png">
+                          <img src="/images/tiles/Tile-9m.png">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>The Honor Tiles
+                  <ul>
+                    <li>East, South, West and North Wind Tiles
+                      <div class="hand">
+                          <div class="handInHand">
+                            <img src="/images/tiles/Tile-we.png">
+                            <img src="/images/tiles/Tile-ws.png">
+                            <img src="/images/tiles/Tile-ww.png">
+                            <img src="/images/tiles/Tile-wn.png">
+                          </div>
+                      </div>
+                    </li>
+                    <li>White, Green and Red Dragon Tiles
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-dw.png">
+                          <img src="/images/tiles/Tile-dg.png">
+                          <img src="/images/tiles/Tile-dr.png">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>Four copies of each tile</li>
+                <li>Total of 136 tiles</li>
+              </ul>
+
+
+            </div>
+          </div>
+          <div class="column-image">
+            <img src="/images/tile-set.jpg">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="column-container">
+          <div class="column-text">
+            <div class="column-header">
+              <h2>Setup</h2>
+            </div>
+            <div class="column-description">
+              <ul>
+                <li>Each player starts with 25,000 points</li>
+                <li>Each player creates a wall of 17x2 tiles</li>
+                <li>These walls become the draw pile</li>
+                <li>The dealer will then roll the dice to decide where to split the wall</li>
+                <li>The 7x2 Tiles to the left of the split becomes the dead wall</li>
+                <li>After the wall break, players take turns drawing tiles until they have 13 tiles</li>
+                <li>These are the players starting hands</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-image">
+            <img src="/images/setup.jpg">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="column-container">
+          <div class="column-text">
+            <div class="column-header">
+              <h2>Seating Positions</h2>
+            </div>
+            <div class="column-description">
+              <ul>
+                <li>The Dealer is always seated as the east wind</li>
+                <li>Winds are then assigned counter clockwise in the pattern East, South, West, North</li>
+                <li>The turn order moves counter clockwise, with the dealer getting the first draw and discard</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-image">
+            <img src="/images/table.jpg">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="column-container">
+          <div class="column-text">
+            <div class="column-header">
+              <h2>Objective</h2>
+            </div>
+            <div class="column-description">
+              <ul>
+                <li>The Objective of the game is to complete your hand before anyone else</li>
+                <li>While players avoid playing into each other's hands</li>
+                <li>A complete hand is composed of three <em>melds</em> and a pair.</li>
+                <li>A meld either of the following:
+                  <ul>
+                    <li>
+                      A Set
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-8s.png">
+                          <img src="/images/tiles/Tile-8s.png">
+                          <img src="/images/tiles/Tile-8s.png">
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      A Run
+                      <div class="hand">
+                        <div class="handInHand">
+                          <img src="/images/tiles/Tile-1m.png">
+                          <img src="/images/tiles/Tile-2m.png">
+                          <img src="/images/tiles/Tile-3m.png">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>A legal hand must have one or more Han to be worth any points</li>
+                <li>You can see legal Han on the <a href="/pages/yaku.html">Han/Yaku</a>page</li>
+                <li>Two Different ways to declare a win:
+                  <ul>
+                    <li>Tsumo: Winning off a teal that you drew from the Wall</li>
+                    <li>Ron: Winning off an opponents discard</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-image">
+            <img src="/images/win.jpg">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="column-container">
+          <div class="column-text">
+            <div class="column-header">
+              <h2>Round Maintence</h2>
+            </div>
+            <div class="column-description">
+              <ul>
+                <li>After each round points are distrubed to the player who completed their hand</li>
+                <li>Different hands are worth different amounts of points</li>
+                <li>Points are exchanged and tiles shuffled</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-image">
+            <img src="/images/mah.jpg">
+          </div>
+        </div>
       </div>
       <div id="footer-placeholder"></div>
     </div>
