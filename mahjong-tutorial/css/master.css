@@ -41,3 +41,20 @@
 }
 
 /* End of Footer Stylings */
+
+h1 {
+  margin-top: 64px;
+  margin-bottom: 48px;
+  font-size: 40px;
+  text-align: center;
+}
+
+h2  {
+  margin-top: 64px;
+  margin-bottom: 48px;
+  font-size: 40px;
+}
+
+p {
+  text-align: center;
+}
