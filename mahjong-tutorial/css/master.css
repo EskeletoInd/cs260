@@ -58,3 +58,8 @@ h2  {
 p {
   text-align: center;
 }
+
+.image-holder {
+  display: flex;
+  justify-content: center;
+}
