@@ -47,16 +47,22 @@ h1 {
   margin-bottom: 48px;
   font-size: 40px;
   text-align: center;
+  font-family: "Courier New", Courier, monospace;
 }
 
 h2  {
   margin-top: 64px;
   margin-bottom: 48px;
   font-size: 40px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 p {
   text-align: center;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .image-holder {
