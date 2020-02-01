@@ -13,20 +13,27 @@ function showToast() {
   $('#noCityToast').toast('show');
 }
 
-function getWeather(cityId, call) {
-  const url = "http://api.openweathermap.org/data/2.5/" + call + "?id=" + cityId + "&units=imperial" + "&APPID=f708e944fc17fad73b301d123d4695ec";
-  fetch(url)
+function populateWeather(city_id) {
+  new Promise((resolve, reject) => {
+    resolve([getWeather(city_id, "weather"), getWeather(city_id, "forecast")]);
+  }).then(function(results) {
+    drawResults(results[0], results[1]);
+  });
+}
+
+function getWeather(city_id, call) {
+  const url = "http://api.openweathermap.org/data/2.5/" + call + "?id=" + city_id + "&units=imperial" + "&APPID=f708e944fc17fad73b301d123d4695ec";
+  var a = fetch(url)
     .then(function(response) {
-      return response.json();
+      resolve(response.json());
     }).then(function(json) {
       console.log(json);
       return json;
     });
+  return a;
 }
 
-async function populateWeather(selected_city) {
-  var current = await getWeather(selected_city, "weather");
-  var forecast = await getWeather(selected_city, "forecast");
+function drawResults(current, forecast) {
   let results = "";
   results += '<h2>Weather in ' + current.name + "</h2>";
   for (let i = 0; i < current.weather.length; i++) {
