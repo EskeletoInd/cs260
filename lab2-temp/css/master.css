@@ -35,6 +35,8 @@
   position: relative;
   z-index: -1;
   min-width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -46,61 +48,21 @@
 
 /* Displaying Weather */
 
-.icon, .icon img, .weatherHeader, .condition, .weatherContainer {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.forecastResults {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.weatherContainer {
-  min-width: 100vh;
-  height: 75px;
-  overflow: hidden;
+#forecastTable tr {
   border: 1px solid black;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
 }
 
-.mainWeatherContainer {
-  height: 100px;
+#forecastTable th, #forecastTable td {
+  border-right: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
 }
 
-.icon {
-  float: left;
-  width: 75px;
-  height: 75px;
-  margin: 0px;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+table tr:nth-child(odd) {
+  background-color: #eee;
 }
 
-.mainIcon {
-  width: 100px;
-  height: 100px;
-}
-
-.icon img {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%
-}
-
-.weatherHeader {
-  margin-top: 30px;
-  font-size: 26px;
-}
-
-.condition {
-  margin: 10px;
-  overflow: hidden;
-  font-size: 16px;
+table tr:nth-child(even) {
+  background-color: #80ccff;
 }
