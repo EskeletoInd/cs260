@@ -1,5 +1,12 @@
 var selected_city = null;
 
+function closeDropdown() {
+  var style = window.getComputedStyle(document.getElementById("myDropdown"));
+  if (style.display !== 'none') {
+    toggleShow();
+  }
+}
+
 function toggleShow() {
   document.getElementById("myDropdown").classList.toggle("show");
 }

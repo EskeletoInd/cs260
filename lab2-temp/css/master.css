@@ -1,0 +1,29 @@
+.search {
+  padding-top: 20px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#searchbtn {
+  height: 24px;
+}
+
+.dropdown {
+  padding-right: 20px;
+}
+
+.content {
+  overflow: hidden;
+  margin: 0 auto;
+  flex-grow: 1;
+  overflow: auto;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+/* content not stretching */
+#weatherResults, #forecastResults {
+  position: relative;
+  z-index: -1;
+}
