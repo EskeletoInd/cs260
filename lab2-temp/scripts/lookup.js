@@ -107,7 +107,7 @@ function drawCurrentWeather(current) {
   details.appendChild(col);
   // Wind Direction
   var item = document.createElement("div");
-  item.innerHTML = "Current Temp: " + degreeToDirection(current.wind.direction);
+  item.innerHTML = "Wind Direction: " + degreeToDirection(current.wind.deg);
   col.appendChild(item);
   // Wind Speed
   var item = document.createElement("div");

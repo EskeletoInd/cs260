@@ -53,15 +53,9 @@
  display: none;
  position: absolute;
  background-color: #f6f6f6;
- width: 230px;
+ width: 260px;
  border: 1px solid #ddd;
  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content button, .dropdown-content a {
- color: black;
- display: block;
 }
 
 /* Change color of dropdown links on hover */
