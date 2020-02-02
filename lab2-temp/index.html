@@ -10,25 +10,50 @@
   </head>
   <body>
     <div class="content">
-      <div class="search">
-        <div class="dropdown">
-         <button onclick="toggleShow()" class="dropbtn">Select City</button>
-         <div id="myDropdown" class="dropdown-content">
-           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-         </div>
-        </div>
-        <button id="searchbtn" type="button" name="button">Search</button>
-        <div id="noCityToast" class="toast" data-delay="2000">
-          <div class="toast-header">
-            No City Selected
+      <div class="search-bar">
+        <div class="search">
+          <div class="dropdown">
+           <button onclick="toggleShow()" class="dropbtn">Select City</button>
+           <div id="myDropdown" class="dropdown-content">
+             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+           </div>
           </div>
-          <div class="toast-body">
-            Select a city from the drop down menu
+          <button id="searchbtn" type="button" name="button">Search</button>
+          <div id="noCityToast" class="toast" data-delay="2000">
+            <div class="toast-header">
+              No City Selected
+            </div>
+            <div class="toast-body">
+              Select a city from the drop down menu
+            </div>
           </div>
         </div>
       </div>
-      <div id="weatherResults"></div>
-      <div id="forecastResults"></div>
+      <div id="weatherResults">
+        <div class="mainWeatherContainer weatherContainer">
+          <div class="mainIcon icon">
+            <img src="http://openweathermap.org/img/w/13n.png" alt="">
+          </div>
+          <h2 class="weatherHeader">Temp</h2>
+          <p class="condition">Something</p>
+        </div>
+      </div>
+      <div id="forecastResults">
+        <div class="weatherContainer">
+          <div class="icon">
+            <img src="http://openweathermap.org/img/w/13n.png" alt="">
+          </div>
+          <h2 class="weatherHeader">Temporary</h2>
+          <p class="condition">Lux Cannee</p>
+        </div>
+        <div class="weatherContainer">
+          <div class="icon">
+            <img src="http://openweathermap.org/img/w/13n.png" alt="">
+          </div>
+          <h2 class="weatherHeader">Temporary</h2>
+          <p class="condition">Lux Cannee</p>
+        </div>
+      </div>
     </div>
   </body>
   <script src="scripts/dropdown.js"></script>
