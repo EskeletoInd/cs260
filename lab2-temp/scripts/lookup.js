@@ -23,34 +23,15 @@ function getWeather(city_id) {
   fetch(urlBuilder(city_id, "weather"))
   .then((resp) => resp.json())
   .then((current) => {
-    console.log(current);
-    //drawCurrentWeather(current);
+    emptyCurrentWeather();
+    drawCurrentWeather(current);
   })
   fetch(urlBuilder(city_id, "forecast"))
   .then((resp) => resp.json())
   .then((forecast) => {
+    emptyForecastTable();
     drawForecastWeather(forecast);
   })
-}
-
-function drawCurrentWeather(current) {
-  var holder = document.createElement("div");
-
-  console.log(current);
-  let results = "";
-  results += '<h2>Weather in ' + current.name + "</h2>";
-  for (let i = 0; i < current.weather.length; i++) {
-    results += '<img src="http://openweathermap.org/img/w/' + current.weather[i].icon + '.png"/>';
-  }
-  results += '<h2>' + current.main.temp + " &deg;F</h2>"
-  results += "<p>"
-  for (let i = 0; i < current.weather.length; i++) {
-    results += current.weather[i].description
-    if (i !== current.weather.length - 1)
-      results += ", "
-  }
-  results += "</p>";
-  document.getElementById("weatherResults").innerHTML = results;
 }
 
 function timeToString(time) {
@@ -63,6 +44,81 @@ function degreeToDirection(degree) {
   var val = Math.floor((degree / 22.5) + 0.5);
   var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
   return arr[(val % 16)];
+}
+
+function emptyCurrentWeather() {
+  var div = document.getElementById("weatherResults");
+  div.innerHTML = "";
+}
+
+function emptyForecastTable() {
+  var rows = document.getElementById("forecastTable").rows;
+  for (var i = rows.length - 1; i >= 1; --i) {
+    rows[i].remove();
+  }
+}
+
+function drawCurrentWeather(current) {
+  console.log(current);
+
+  var details = document.createElement("div");
+  details.classList.add("weatherDetails");
+  // Add Image
+  var img = document.createElement("img");
+  img.src = "http://openweathermap.org/img/w/" + current.weather[0].icon + ".png";
+  // First Column
+  var col = document.createElement("div");
+  details.appendChild(col);
+  // Current Temp
+  var item = document.createElement("div");
+  item.innerHTML = "Current Temp: " + current.main.temp + "°F";
+  col.appendChild(item);
+  // Current RealFeel
+  var item = document.createElement("div");
+  item.innerHTML = "Feels Like: " + current.main.feels_like + "°F";
+  col.appendChild(item);
+
+  // Second Column
+  var col = document.createElement("div");
+  details.appendChild(col);
+  // Temp Max
+  var item = document.createElement("div");
+  item.innerHTML = "Low: " + current.main.temp_min + "°F";
+  col.appendChild(item);
+  // Temp Min
+  var item = document.createElement("div");
+  item.innerHTML = "High: " + current.main.temp_max + "°F";
+  col.appendChild(item);
+
+  // Third Column
+  var col = document.createElement("div");
+  details.appendChild(col);
+  // Humidity
+  var item = document.createElement("div");
+  item.innerHTML = "Humidity: " + current.main.humidity + "%";
+  col.appendChild(item);
+  // Cloudiness
+  var item = document.createElement("div");
+  item.innerHTML = "Cloudiness: " + current.clouds.all + "%";
+  col.appendChild(item);
+
+  // Four Column
+  var col = document.createElement("div");
+  details.appendChild(col);
+  // Wind Direction
+  var item = document.createElement("div");
+  item.innerHTML = "Current Temp: " + degreeToDirection(current.wind.direction);
+  col.appendChild(item);
+  // Wind Speed
+  var item = document.createElement("div");
+  item.innerHTML = "Feels Like: " + current.wind.speed + "mph";
+  col.appendChild(item);
+
+  var header = document.createElement("h1");
+  header.innerHTML = current.name;
+  var div = document.getElementById("weatherResults");
+  div.appendChild(header);
+  div.appendChild(details);
 }
 
 function buildForecastRow(current_weather) {
@@ -121,4 +177,5 @@ function drawForecastWeather(forecast) {
     var row = buildForecastRow(forecast.list[i]);
     table.appendChild(row);
   }
+  table.style.display = "block";
 }

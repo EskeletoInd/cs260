@@ -101,7 +101,6 @@ function createBtn(id, city, country) {
   btn.onclick = function(event) {
     selected_city = id;
   };
-
   return btn;
 }
 

@@ -33,7 +33,6 @@
 
 #weatherResults, #forecastResults {
   position: relative;
-  z-index: -1;
   min-width: 100%;
   display: flex;
   justify-content: center;
@@ -41,9 +40,15 @@
 }
 
 #weatherResults {
-  align-items: center;
+  flex-direction: column;
   padding-top: 50px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
+}
+
+.weatherDetails {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 /* Displaying Weather */
@@ -65,4 +70,8 @@ table tr:nth-child(odd) {
 
 table tr:nth-child(even) {
   background-color: #80ccff;
+}
+
+h1 {
+  padding-bottom: 20px;
 }
