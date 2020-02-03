@@ -20,6 +20,7 @@ function filterFunction() {
   filteredCities = [];
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
+  filter = filter.replace(',', '').replace(' ', '');
   div = document.getElementById("myDropdown");
   for (i = 0; i < all_cities.length; i++) {
     var text = all_cities[i].name + all_cities[i].country;
