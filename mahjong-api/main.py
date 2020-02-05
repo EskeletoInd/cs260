@@ -8,7 +8,6 @@ from mahjong.meld import Meld
 import json
 
 app = Flask(__name__)
-# cors = CORS(app, resources={r"/*": {"origins": "*"}})
 api = Api(app)
 parser = reqparse.RequestParser()
 
@@ -58,6 +57,9 @@ def score(args):
 
 def packageScore(score, opened):
     to_return = {}
+    if score.error is not None:
+        to_return['error'] = score.error
+        return to_return
     to_return['cost'] = {
         'main': score.cost['main'],
         'additional': score.cost['additional']
@@ -103,6 +105,7 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     return response
+
 
 api.add_resource(Test, '/')
 api.add_resource(ScoreHand, '/ScoreHand')
