@@ -111,3 +111,17 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /* End Toggle Button Styling */
+
+.inputContianer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.additionalOptions {
+  padding-left: 60px;
+}
+
+.additionalOptions > div {
+  padding-bottom: 12px;
+}

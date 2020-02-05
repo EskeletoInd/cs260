@@ -1,6 +1,6 @@
-// TODO Winning Tile
-// TODO Deactivate the Score until 14 tiles in hand
 // TODO Add options
+// TODO Add Dora Indicators
+// TODO Add Display of Scores
 // TODO add tenpai filtering
 //
 
@@ -18,12 +18,14 @@ let tiles = ["1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m",
 let numTiles = {};
 let hand = buildNewHand();
 
+// Logs 4 copies of each tile
 function populateTileNum() {
   for (let i = 0; i < tiles.length; i++) {
     numTiles[tiles[i]] = 4;
   }
 }
 
+// Builds a New Hand with correct structure
 function buildNewHand() {
   return {
     winTile: {
@@ -60,18 +62,22 @@ function buildNewHand() {
   }
 }
 
+// Creates an img element with the correct src
 function createTileImage(tileId) {
   let img = document.createElement("img");
   img.src = "/images/tiles/Tile-" + tileId + ".png";
   return img;
 }
 
+// Increase the tileid by one 1m -> 2m
 function increaseTileId(tileid) {
   let splt = tileid.split("");
   let num = (Number(splt[0])) + 1;
   let to_return = num + splt[1];
   return to_return;
 }
+
+// Methods that edit the hand Obj Correctly
 
 function addTileToObj(obj, tileid) {
   let splt = tileid.split("");
@@ -249,6 +255,7 @@ function removeMeldFromHand(tileid, type, opened = true) {
   }
 }
 
+// Adds listener to the score button
 document.getElementById("scoreButton").onclick = function(event) {
   event.preventDefault();
   fetch('http://127.0.0.1:5000/ScoreHand', {
@@ -261,6 +268,7 @@ document.getElementById("scoreButton").onclick = function(event) {
   });
 }
 
+// Button Alterers
 function deactiveScoreButton() {
   let btn = document.getElementById("scoreButton");
   btn.disabled = true;
@@ -271,52 +279,6 @@ function activateScoreButton() {
   let btn = document.getElementById("scoreButton");
   btn.disabled = false;
   btn.style.opacity = "100%";
-}
-
-// Temporary Hand Formated Correctly
-function getTempHand() {
-  return {
-    winTile: {
-      man: "",
-      pin: "",
-      sou: "4",
-      honors: ""
-    },
-    // Includes the tiles used in melds and winning tile
-    tiles: {
-      man: "22444",
-      pin: "333567",
-      sou: "444",
-      honors: ""
-    },
-    doraIndicators: [{
-        man: "8",
-        pin: "",
-        sou: "",
-        honors: ""
-    }],
-    melds: [],
-    options: {
-      playerWind: "East",
-      roundWind: "East",
-      isTsumo: true,
-      isRiichi: false,
-      isDoubleRiichi: false,
-      isIppatsu: false,
-      isRinshan: false,
-      isChankan: false,
-      isHaitei: false,
-      isHoutei: false,
-      isNagashiMangan: false,
-      isTenhou: false,
-      isRenhou: false,
-      isChiihou: false
-    }
-  }
-}
-
-function findSelector(tileName) {
-  return document.getElementById(tileName + "Selector")
 }
 
 function disableTileSelector(tileName) {
@@ -347,22 +309,10 @@ function enableTileSelector(tileName) {
   }
 }
 
-function inHandOnClickFactory(elem, tileid, type=null, opened=null) {
-  // Single Tile, ie Not a Meld
-  if (type === null) {
-    return () => {
-      removeTileFromHand(tileid);
-      elem.parentNode.removeChild(elem);
-      refreshbuttons();
-    }
-  } else {
-    // Need to remove a meld
-    return () => {
-      removeMeldFromHand(tileid, type, opened);
-      elem.parentNode.removeChild(elem);
-      refreshbuttons();
-    }
-  }
+// Slider Functions
+
+function findSelector(tileName) {
+  return document.getElementById(tileName + "Selector")
 }
 
 function addEventToSlider(id, others) {
@@ -386,45 +336,47 @@ function populateSliderEvent() {
   }
 }
 
-function addChiToHand(starttile) {
-  addMeldToHand("chi", starttile);
+// Editing the current Hand object
+
+function addChiToHand(tileid) {
+  addMeldToHand("chi", tileid);
 
   let div = document.createElement("div");
   div.setAttribute("class", "handCalled")
-  let onClick = inHandOnClickFactory(div, starttile, "chi", true);
+  let onClick = inHandOnClickFactory(div, tileid, "chi", true);
 
   let createdBtn = document.createElement("button");
   createdBtn.onclick = onClick;
-  let createdImg = createTileImage(starttile)
+  let createdImg = createTileImage(tileid)
   createdImg.setAttribute("class", "calledtile");
   createdBtn.appendChild(createdImg);
   div.appendChild(createdBtn);
 
   createdBtn = document.createElement("button");
   createdBtn.onclick = onClick;
-  starttile = increaseTileId(starttile);
-  createdBtn.appendChild(createTileImage(starttile));
+  tileid = increaseTileId(tileid);
+  createdBtn.appendChild(createTileImage(tileid));
   div.appendChild(createdBtn);
 
   createdBtn = document.createElement("button");
   createdBtn.onclick = onClick;
-  starttile = increaseTileId(starttile);
-  createdBtn.appendChild(createTileImage(starttile));
+  tileid = increaseTileId(tileid);
+  createdBtn.appendChild(createTileImage(tileid));
   div.appendChild(createdBtn);
   document.getElementById("currentCalled").appendChild(div);
 }
 
-function addPonToHand(tileId) {
-  addMeldToHand("pon", tileId);
+function addPonToHand(tileid) {
+  addMeldToHand("pon", tileid);
 
   let div = document.createElement("div");
   div.setAttribute("class", "handCalled");
-  let onclick = inHandOnClickFactory(div, tileId, "pon", true);
+  let onclick = inHandOnClickFactory(div, tileid, "pon", true);
 
   for (let i = 0; i < 3; i++) {
     let createdBtn = document.createElement("button");
     createdBtn.onclick = onclick;
-    let createdImg = createTileImage(tileId);
+    let createdImg = createTileImage(tileid);
     if (i === 0) {
       createdImg.setAttribute("class", "calledtile");
     }
@@ -434,17 +386,17 @@ function addPonToHand(tileId) {
   document.getElementById("currentCalled").appendChild(div);
 }
 
-function addOpenKanToHand(tileId) {
-  addMeldToHand("kan", tileId);
+function addOpenKanToHand(tileid) {
+  addMeldToHand("kan", tileid);
 
   let div = document.createElement("div");
   div.setAttribute("class", "handCalled");
-  let onclick = inHandOnClickFactory(div, tileId, "kan", true);
+  let onclick = inHandOnClickFactory(div, tileid, "kan", true);
 
   for (let i = 0; i < 4; i++) {
     let createdBtn = document.createElement("button");
     createdBtn.onclick = onclick;
-    let createdImg = createTileImage(tileId);
+    let createdImg = createTileImage(tileid);
     if (i === 0) {
       createdImg.setAttribute("class", "calledtile");
     }
@@ -454,12 +406,12 @@ function addOpenKanToHand(tileId) {
   document.getElementById("currentCalled").appendChild(div);
 }
 
-function addClosedKanToHand(tileId) {
-  addMeldToHand("kan", tileId, false);
+function addClosedKanToHand(tileid) {
+  addMeldToHand("kan", tileid, false);
 
   let div = document.createElement("div");
   div.setAttribute("class", "handCalled");
-  let onclick = inHandOnClickFactory(div, tileId, "kan", false);
+  let onclick = inHandOnClickFactory(div, tileid, "kan", false);
 
   let createdImg = null;
   for (let i = 0; i < 4; i++) {
@@ -468,12 +420,38 @@ function addClosedKanToHand(tileId) {
     if ((i === 0) || (i === 3)) {
       createdImg = createTileImage("unknown");
     } else {
-      createdImg = createTileImage(tileId);
+      createdImg = createTileImage(tileid);
     }
     createdBtn.appendChild(createdImg);
     div.appendChild(createdBtn);
   }
   document.getElementById("currentCalled").appendChild(div);
+}
+
+
+
+
+
+// Setting up the Tile Selector Buttons
+
+
+
+function inHandOnClickFactory(elem, tileid, type=null, opened=null) {
+  // Single Tile, ie Not a Meld
+  if (type === null) {
+    return () => {
+      removeTileFromHand(tileid);
+      elem.parentNode.removeChild(elem);
+      refreshbuttons();
+    }
+  } else {
+    // Need to remove a meld
+    return () => {
+      removeMeldFromHand(tileid, type, opened);
+      elem.parentNode.removeChild(elem);
+      refreshbuttons();
+    }
+  }
 }
 
 function addEventToSelectors(id) {
@@ -520,6 +498,10 @@ function populateSelectorsEvent() {
     addEventToSelectors(tiles[i]);
   }
 }
+
+
+
+// Refreshing the conditions on buttons
 
 function refreshbuttons() {
   let chi = document.getElementById("chiSlider");

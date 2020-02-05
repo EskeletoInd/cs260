@@ -20,75 +20,109 @@
           <div id="currentCalled" class="handCalledContainer"></div>
         </div>
         <button id="scoreButton">Score</button>
-        <div class="modeSwitcher">
-          <div class="modeSlider">
-            <p>Chi</p>
-            <label class="switch">
-              <input id="chiSlider" type="checkbox">
-              <span class="slider"></span>
-            </label>
+        <div class="inputContianer">
+          <div class="tileAddingOptions">
+            <div class="modeSwitcher">
+              <div class="modeSlider">
+                <p>Chi</p>
+                <label class="switch">
+                  <input id="chiSlider" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="modeSlider">
+                <p>Pon</p>
+                <label class="switch">
+                  <input id="ponSlider" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="modeSlider">
+                <p>Open Kan</p>
+                <label class="switch">
+                  <input id="openKanSlider" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="modeSlider">
+                <p>Closed Kan</p>
+                <label class="switch">
+                  <input id="closedKanSlider" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="gridContainer">
+              <div class="tileButtonGrid">
+                <button id="1mSelector"><img src="/images/tiles/Tile-1m.png"></button>
+                <button id="2mSelector"><img src="/images/tiles/Tile-2m.png"></button>
+                <button id="3mSelector"><img src="/images/tiles/Tile-3m.png"></button>
+                <button id="4mSelector"><img src="/images/tiles/Tile-4m.png"></button>
+                <button id="5mSelector"><img src="/images/tiles/Tile-5m.png"></button>
+                <button id="6mSelector"><img src="/images/tiles/Tile-6m.png"></button>
+                <button id="7mSelector"><img src="/images/tiles/Tile-7m.png"></button>
+                <button id="8mSelector"><img src="/images/tiles/Tile-8m.png"></button>
+                <button id="9mSelector"><img src="/images/tiles/Tile-9m.png"></button>
+                <button id="1sSelector"><img src="/images/tiles/Tile-1s.png"></button>
+                <button id="2sSelector"><img src="/images/tiles/Tile-2s.png"></button>
+                <button id="3sSelector"><img src="/images/tiles/Tile-3s.png"></button>
+                <button id="4sSelector"><img src="/images/tiles/Tile-4s.png"></button>
+                <button id="5sSelector"><img src="/images/tiles/Tile-5s.png"></button>
+                <button id="6sSelector"><img src="/images/tiles/Tile-6s.png"></button>
+                <button id="7sSelector"><img src="/images/tiles/Tile-7s.png"></button>
+                <button id="8sSelector"><img src="/images/tiles/Tile-8s.png"></button>
+                <button id="9sSelector"><img src="/images/tiles/Tile-9s.png"></button>
+                <button id="1pSelector"><img src="/images/tiles/Tile-1p.png"></button>
+                <button id="2pSelector"><img src="/images/tiles/Tile-2p.png"></button>
+                <button id="3pSelector"><img src="/images/tiles/Tile-3p.png"></button>
+                <button id="4pSelector"><img src="/images/tiles/Tile-4p.png"></button>
+                <button id="5pSelector"><img src="/images/tiles/Tile-5p.png"></button>
+                <button id="6pSelector"><img src="/images/tiles/Tile-6p.png"></button>
+                <button id="7pSelector"><img src="/images/tiles/Tile-7p.png"></button>
+                <button id="8pSelector"><img src="/images/tiles/Tile-8p.png"></button>
+                <button id="9pSelector"><img src="/images/tiles/Tile-9p.png"></button>
+                <span></span>
+                <button id="weSelector"><img src="/images/tiles/Tile-we.png"></button>
+                <button id="wsSelector"><img src="/images/tiles/Tile-ws.png"></button>
+                <button id="wwSelector"><img src="/images/tiles/Tile-ww.png"></button>
+                <button id="wnSelector"><img src="/images/tiles/Tile-wn.png"></button>
+                <button id="dwSelector"><img src="/images/tiles/Tile-dw.png"></button>
+                <button id="dgSelector"><img src="/images/tiles/Tile-dg.png"></button>
+                <button id="drSelector"><img src="/images/tiles/Tile-dr.png"></button>
+              </div>
+            </div>
           </div>
-          <div class="modeSlider">
-            <p>Pon</p>
-            <label class="switch">
-              <input id="ponSlider" type="checkbox">
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="modeSlider">
-            <p>Open Kan</p>
-            <label class="switch">
-              <input id="openKanSlider" type="checkbox">
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="modeSlider">
-            <p>Closed Kan</p>
-            <label class="switch">
-              <input id="closedKanSlider" type="checkbox">
-              <span class="slider"></span>
-            </label>
+          <div class="additionalOptions">
+            <div class="winConditionRadios">
+              <input type="radio" name="winCondition" value="Tsumo">Win by Self Draw
+              <input type="radio" name="winCondition" value="Ron">Win off Discard
+            </div>
+            <div class="seatWindRadios">
+              Seat Wind:
+              <input type="radio" name="seatWind" value="East">East
+              <input type="radio" name="seatWind" value="South">South
+              <input type="radio" name="seatWind" value="West">West
+              <input type="radio" name="seatWind" value="North">North
+            </div>
+            <div class="roundWindRadios">
+              Round Wind:
+              <input type="radio" name="roundWind" value="East">East
+              <input type="radio" name="roundWind" value="South">South
+              <input type="radio" name="roundWind" value="West">West
+              <input type="radio" name="roundWind" value="North">North
+            </div>
+            <div class="additionalWinConditions">
+              <input type="checkbox" name="riichi" value="riichi">Riichi
+              <input type="checkbox" name="doubleRiichi" value="doubleRiichi">Double Riichi
+              <input type="checkbox" name="ippatsu" value="ippatsu">One Shot
+              <input type="checkbox" name="chankan" value="chankan">Robbing a Kan
+              <input type="checkbox" name="rinshan" value="rinshin">Deadwall Draw
+              <input type="checkbox" name="lastDraw" value="lastDraw">Last Draw
+            </div>
           </div>
         </div>
-        <div class="gridContainer">
-          <div class="tileButtonGrid">
-            <button id="1mSelector"><img src="/images/tiles/Tile-1m.png"></button>
-            <button id="2mSelector"><img src="/images/tiles/Tile-2m.png"></button>
-            <button id="3mSelector"><img src="/images/tiles/Tile-3m.png"></button>
-            <button id="4mSelector"><img src="/images/tiles/Tile-4m.png"></button>
-            <button id="5mSelector"><img src="/images/tiles/Tile-5m.png"></button>
-            <button id="6mSelector"><img src="/images/tiles/Tile-6m.png"></button>
-            <button id="7mSelector"><img src="/images/tiles/Tile-7m.png"></button>
-            <button id="8mSelector"><img src="/images/tiles/Tile-8m.png"></button>
-            <button id="9mSelector"><img src="/images/tiles/Tile-9m.png"></button>
-            <button id="1sSelector"><img src="/images/tiles/Tile-1s.png"></button>
-            <button id="2sSelector"><img src="/images/tiles/Tile-2s.png"></button>
-            <button id="3sSelector"><img src="/images/tiles/Tile-3s.png"></button>
-            <button id="4sSelector"><img src="/images/tiles/Tile-4s.png"></button>
-            <button id="5sSelector"><img src="/images/tiles/Tile-5s.png"></button>
-            <button id="6sSelector"><img src="/images/tiles/Tile-6s.png"></button>
-            <button id="7sSelector"><img src="/images/tiles/Tile-7s.png"></button>
-            <button id="8sSelector"><img src="/images/tiles/Tile-8s.png"></button>
-            <button id="9sSelector"><img src="/images/tiles/Tile-9s.png"></button>
-            <button id="1pSelector"><img src="/images/tiles/Tile-1p.png"></button>
-            <button id="2pSelector"><img src="/images/tiles/Tile-2p.png"></button>
-            <button id="3pSelector"><img src="/images/tiles/Tile-3p.png"></button>
-            <button id="4pSelector"><img src="/images/tiles/Tile-4p.png"></button>
-            <button id="5pSelector"><img src="/images/tiles/Tile-5p.png"></button>
-            <button id="6pSelector"><img src="/images/tiles/Tile-6p.png"></button>
-            <button id="7pSelector"><img src="/images/tiles/Tile-7p.png"></button>
-            <button id="8pSelector"><img src="/images/tiles/Tile-8p.png"></button>
-            <button id="9pSelector"><img src="/images/tiles/Tile-9p.png"></button>
-            <button id="weSelector"><img src="/images/tiles/Tile-we.png"></button>
-            <button id="wsSelector"><img src="/images/tiles/Tile-ws.png"></button>
-            <button id="wwSelector"><img src="/images/tiles/Tile-ww.png"></button>
-            <button id="wnSelector"><img src="/images/tiles/Tile-wn.png"></button>
-            <span></span>
-            <button id="dwSelector"><img src="/images/tiles/Tile-dw.png"></button>
-            <button id="dgSelector"><img src="/images/tiles/Tile-dg.png"></button>
-            <button id="drSelector"><img src="/images/tiles/Tile-dr.png"></button>
-          </div>
-        </div>
+
+
       </div>
       <div id="footer-placeholder"></div>
     </div>
