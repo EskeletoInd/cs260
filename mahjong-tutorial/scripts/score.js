@@ -1,10 +1,9 @@
-// TODO Add options
-// TODO Add Dora Indicators
+// TODO Add option funcionality
 // TODO Add Display of Scores
 // TODO add tenpai filtering
 //
 
-let sliders = ["chiSlider", "ponSlider", "openKanSlider", "closedKanSlider"]
+let sliders = ["chiSlider", "ponSlider", "openKanSlider", "closedKanSlider", "doraSlider"]
 let selectors = ["1mSelector", "2mSelector", "3mSelector", "4mSelector",
 "5mSelector", "6mSelector", "7mSelector", "8mSelector", "9mSelector", "1sSelector",
 "2sSelector", "3sSelector", "4sSelector", "5sSelector", "6sSelector", "7sSelector",
@@ -255,6 +254,31 @@ function removeMeldFromHand(tileid, type, opened = true) {
   }
 }
 
+function compareDoraIndicators(a, b) {
+  if ((a.honors === b.honors) && (a.man === b.man) && (a.pin === b.pin) && (a.sou === b.sou)) {
+    return true;
+  }
+  return false;
+}
+
+function addDoraIndicatorToHand(tileid) {
+  let doraIndicator = {type: "",opened: "",man: "",pin: "",sou: "",honors:""};
+  addTileToObj(doraIndicator, tileid);
+  hand.doraIndicators.push(doraIndicator);
+}
+
+function removeDoraIndicatorFromHand(tileid) {
+  let doraIndicator = {type: "",opened: "",man: "",pin: "",sou: "",honors:""};
+  addTileToObj(doraIndicator, tileid);
+  for (let i = 0; i < hand.doraIndicators.length; i++) {
+    if (compareDoraIndicators(hand.doraIndicators[i], doraIndicator)) {
+      hand.doraIndicators.splice(i, 1);
+      numTiles[tileid] += 1;
+    }
+    return;
+  }
+}
+
 // Adds listener to the score button
 document.getElementById("scoreButton").onclick = function(event) {
   event.preventDefault();
@@ -337,6 +361,24 @@ function populateSliderEvent() {
 }
 
 // Editing the current Hand object
+
+function inHandOnClickFactory(elem, tileid, type=null, opened=null) {
+  // Single Tile, ie Not a Meld
+  if (type === null) {
+    return () => {
+      removeTileFromHand(tileid);
+      elem.parentNode.removeChild(elem);
+      refreshbuttons();
+    }
+  } else {
+    // Need to remove a meld
+    return () => {
+      removeMeldFromHand(tileid, type, opened);
+      elem.parentNode.removeChild(elem);
+      refreshbuttons();
+    }
+  }
+}
 
 function addChiToHand(tileid) {
   addMeldToHand("chi", tileid);
@@ -428,54 +470,46 @@ function addClosedKanToHand(tileid) {
   document.getElementById("currentCalled").appendChild(div);
 }
 
-
-
-
-
-// Setting up the Tile Selector Buttons
-
-
-
-function inHandOnClickFactory(elem, tileid, type=null, opened=null) {
-  // Single Tile, ie Not a Meld
-  if (type === null) {
-    return () => {
-      removeTileFromHand(tileid);
-      elem.parentNode.removeChild(elem);
-      refreshbuttons();
-    }
-  } else {
-    // Need to remove a meld
-    return () => {
-      removeMeldFromHand(tileid, type, opened);
-      elem.parentNode.removeChild(elem);
-      refreshbuttons();
-    }
+function doraOnClickFactory(elem, tileid) {
+  return () => {
+    removeDoraIndicatorFromHand(tileid);
+    elem.parentNode.removeChild(elem);
+    refreshbuttons();
   }
 }
+
+function addDoraIndicator(tileid) {
+  addDoraIndicatorToHand(tileid);
+  let createdBtn = document.createElement("btn");
+  createdBtn.onclick = doraOnClickFactory(createdBtn, tileid);
+  let createdImg = createTileImage(tileid);
+  createdBtn.appendChild(createdImg);
+  document.getElementById("currentDora").appendChild(createdBtn);
+}
+
+// Setting up the Tile Selector Buttons
 
 function addEventToSelectors(id) {
   let btn = document.getElementById(id+"Selector");
   btn.onclick = function() {
-    let chi = document.getElementById("chiSlider");
-    let pon = document.getElementById("ponSlider");
-    let openKan = document.getElementById("openKanSlider");
-    let closedKan = document.getElementById("closedKanSlider");
     let tilename = id.substr(0,2);
-    if (chi.checked) {
+    if (document.getElementById("chiSlider").checked) {
       addChiToHand(tilename);
       numTiles[tilename]--;
       numTiles[increaseTileId(tilename)]--;
       numTiles[increaseTileId(increaseTileId(tilename))]--;
-    } else if (pon.checked) {
+    } else if (document.getElementById("ponSlider").checked) {
       addPonToHand(tilename);
       numTiles[tilename] -= 3;
-    } else if (openKan.checked) {
+    } else if (document.getElementById("openKanSlider").checked) {
       addOpenKanToHand(tilename);
       numTiles[tilename] -= 4;
-    } else if (closedKan.checked) {
+    } else if (document.getElementById("closedKanSlider").checked) {
       addClosedKanToHand(tilename);
       numTiles[tilename] -= 4;
+    } else if (document.getElementById("doraSlider").checked) {
+      addDoraIndicator(tilename);
+      numTiles[tilename] -= 1;
     } else {
       let createdBtn = document.createElement("button");
       createdBtn.onclick = inHandOnClickFactory(createdBtn, tilename);
@@ -499,28 +533,35 @@ function populateSelectorsEvent() {
   }
 }
 
-
-
 // Refreshing the conditions on buttons
 
 function refreshbuttons() {
-  let chi = document.getElementById("chiSlider");
-  let pon = document.getElementById("ponSlider");
-  let openKan = document.getElementById("openKanSlider");
-  let closedKan = document.getElementById("closedKanSlider");
   let suits = ["m", "s", "p"];
   enableTileSelector(tiles);
+
+  // Check for Dora Slider before any length considerations
+  if (document.getElementById("doraSlider").checked) {
+    for (let i = 0; i < tiles.length; i++) {
+      if (numTiles[tiles[i]] < 1) {
+        disableTileSelector(tiles[i]);
+      }
+    }
+    return;
+  }
+  // Check for hand length limitations
   if (hand.tiles.length > 13) {
     disableTileSelector(tiles);
     return;
-  } else if ((hand.tiles.length > 10) && (chi.checked || pon.checked || openKan.checked || closedKan.checked)) {
+  } else if ((hand.tiles.length > 10) &&
+  (document.getElementById("chiSlider").checked || document.getElementById("ponSlider").checked
+   || document.getElementById("openKanSlider").checked || document.getElementById("closedKanSlider").checked)) {
     disableTileSelector(tiles);
     return;
   } else if (hand.tiles.length === 13) {
     // Search for the tiles that could make this hand complete.
     // TODO
   }
-  if (chi.checked) {
+  if (document.getElementById("chiSlider").checked) {
     disableTileSelector(["8m", "9m", "8s", "9s", "8p", "9p", "we", "ws", "ww", "wn", "dw", "dg", "dr"]);
     for (let i = 0; i < suits.length; i++) {
       for (j = 1; j < 8; j++) {
@@ -529,13 +570,13 @@ function refreshbuttons() {
         }
       }
     }
-  } else if (pon.checked) {
+  } else if (document.getElementById("ponSlider").checked) {
     for (let i = 0; i < tiles.length; i++) {
       if (numTiles[tiles[i]] < 3) {
         disableTileSelector(tiles[i]);
       }
     }
-  } else if (openKan.checked || closedKan.checked) {
+  } else if (document.getElementById("openKanSlider").checked || document.getElementById("closedKanSlider").checked) {
     for (let i = 0; i < tiles.length; i++) {
       if (numTiles[tiles[i]] < 4) {
         disableTileSelector(tiles[i]);
