@@ -5,13 +5,9 @@
   margin-left: 16px;
 }
 
-.hand img {
+.hand img, .hand button {
   display: inline-block;
   margin: 0px;
-}
-
-.hand img:hover {
-  
 }
 
 /* Tiles within the Hand */
