@@ -17,6 +17,7 @@ let tiles = ["1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m",
 let numTiles = {};
 let hand = buildNewHand();
 
+
 // Logs 4 copies of each tile
 function populateTileNum() {
   for (let i = 0; i < tiles.length; i++) {
@@ -115,22 +116,22 @@ function removeTileFromObj(obj, tileid) {
     obj.sou = obj.sou.replace(splt[0], '');
   } else if (splt[1] === "p") {
     obj.pin = obj.pin.replace(splt[0], '');
-  } else if (splt[1] === "w") {
-    if (splt[2] === "e") {
+  } else if (splt[0] === "w") {
+    if (splt[1] === "e") {
       obj.honors = obj.honors.replace("1", '');
-    } else if (splt[2] === "s") {
+    } else if (splt[1] === "s") {
       obj.honors = obj.honors.replace("2", '');
-    } else if (splt[2] === "w") {
+    } else if (splt[1] === "w") {
       obj.honors = obj.honors.replace("3", '');
-    } else if (splt[2] === "n") {
+    } else if (splt[1] === "n") {
       obj.honors = obj.honors.replace("4", '');
     }
-  } else if (splt[1] === "d") {
+  } else if (splt[0] === "d") {
     if (splt[2] === "w") {
       obj.honors = obj.honors.replace("5", '');
-    } else if (splt[2] === "g") {
+    } else if (splt[1] === "g") {
       obj.honors = obj.honors.replace("6", '');
-    } else if (splt[2] === "r") {
+    } else if (splt[1] === "r") {
       obj.honors = obj.honors.replace("7", '');
     }
   }
@@ -180,9 +181,10 @@ function addMeldToHand(type, tileid, opened = true) {
       addTileToObj(meld, tileid);
     }
   } else if (type === "kan") {
-    hand.tiles.length -= 1;
     for (let i = 0; i < 4; i++) {
-      addTileToHand(tileid);
+      if (i !== 0) {
+        addTileToHand(tileid);
+      }
       addTileToObj(meld, tileid);
     }
   }
@@ -277,19 +279,6 @@ function removeDoraIndicatorFromHand(tileid) {
     }
     return;
   }
-}
-
-// Adds listener to the score button
-document.getElementById("scoreButton").onclick = function(event) {
-  event.preventDefault();
-  fetch('http://127.0.0.1:5000/ScoreHand', {
-    method: 'post',
-    body: JSON.stringify(hand)
-  }).then((response) => {
-    return response.json();
-  }).then((myJson) => {
-    console.log(myJson);
-  });
 }
 
 // Button Alterers
@@ -591,67 +580,149 @@ function refreshbuttons() {
   }
 }
 
+// Funcionality for radio buttons
+
+function createRadioOnClickFunc(id, toMap) {
+  let elem = document.getElementById(id)
+  elem.checked = false;
+  elem.onclick = () => {
+    if (elem.checked) {
+      hand.options[toMap] = true;
+    } else {
+      hand.options[toMap] = false;
+    }
+  }
+}
+
+function addFunctionalityToRadios() {
+  let wins = document.getElementsByName("winCondition");
+  for (let i = 0; i < wins.length; i++) {
+    if (wins[i].value === "isTsumo") {
+      wins[i].onclick = () => {
+        hand.options.isTsumo = true;
+        hand.options.isRon = false;
+        if (hand.options.isHoutei) {
+          hand.options.isHoutei = false;
+          hand.options.isHaitei = true;
+        }
+      }
+    } else {
+      wins[i].onclick = () => {
+        hand.options.isTsumo = false;
+        hand.options.isRon = true;
+        if (hand.options.isHaitei) {
+          hand.options.isHaitei = false;
+          hand.options.isHoutei = true;
+        }
+      }
+    }
+  }
+
+  let seats = document.getElementsByName("seatWind");
+  for (let i = 0; i < seats.length; i++) {
+    seats[i].onclick = () => {
+      hand.options.playerWind = seats[i].value;
+    }
+  }
+
+  let rounds = document.getElementsByName("roundWind");
+  for (let i = 0; i < rounds.length; i++) {
+    rounds[i].onclick = () => {
+      hand.options.roundWind = rounds[i].value;
+    }
+  }
+
+  createRadioOnClickFunc("riichiCheckBox", "isRiichi");
+  createRadioOnClickFunc("doubleRiichiCheckBox", "isDoubleRiichi");
+  createRadioOnClickFunc("ippatsuCheckBox", "isIppatsu");
+  createRadioOnClickFunc("chankanCheckBox", "isChankan");
+  createRadioOnClickFunc("rinshanCheckBox", "isRinshan");
+  elem = document.getElementById("lastDrawCheckBox")
+  elem.checked = false;
+  elem.onclick = () => {
+    if (elem.checked) {
+      if (hand.options.isTsumo) {
+        // Hand is Tsumo So Haitei
+        hand.options.isHaitei = true;
+      } else {
+        hand.options.isHoutei = true;
+      }
+    } else {
+      hand.options.isHaitei = false;
+      hand.options.isHoutei = false;
+    }
+  }
+}
+
+// Adds listener to the score button
+document.getElementById("scoreButton").onclick = function(event) {
+  event.preventDefault();
+  console.log(hand);
+  fetch('http://127.0.0.1:5000/ScoreHand', {
+    method: 'post',
+    body: JSON.stringify(hand)
+  }).then((response) => {
+    return response.json();
+  }).then((myJson) => {
+    console.log(myJson);
+    displayResults(myJson);
+  });
+}
+
+// Displaying the Results
+
+function resetResults() {
+  let container = document.getElementById("resultsContianer");
+  for (i = container.children.length - 1; i >= 0; i--) {
+    container.removeChild(container.children[i]);
+  }
+  let header = document.createElement("h3");
+  header.innerHTML = "Results";
+  container.appendChild(header);
+}
+
+function displayResults(json) {
+  // Hand Scored Successfully
+  resetResults();
+  let container = document.getElementById("resultsContianer");
+  if (json.error === "None") {
+    // Cost
+    let cost = document.createElement("h3");
+    cost.innerHTML = "Main: " + json.cost.main + " Additional: " + json.cost.additional;
+    container.appendChild(cost);
+    // Han
+    let han = document.createElement("h4");
+    han.innerHTML = "Han: " + json.han;
+    container.appendChild(han);
+    // yaku
+    let yaku = document.createElement("div");
+    for (i = 0; i < json.yaku.length; i++) {
+      let curYaku = document.createElement("p");
+      curYaku.innerHTML = "Han : " + json.yaku[i].yaku + " - " + json.yaku[i].reason + " - " + json.yaku[i].japaneseReason;
+      yaku.appendChild(curYaku);
+    }
+    container.appendChild(yaku);
+    // Fu
+    let fu = document.createElement("h5");
+    fu.innerHTML = "Fu: " + json.fu
+    container.appendChild(fu);
+    // Fu details
+    let fudetails = document.createElement("div");
+    for (i = 0; i < json.fuDetails.length; i++) {
+      let curfu = document.createElement("p");
+      curfu.innerHTML = "Fu: " + json.fuDetails[i].fu + " - " + json.fuDetails[i].reason
+      fudetails.appendChild(curfu);
+    }
+    container.appendChild(fudetails);
+  } else {
+    let errmsg = document.createElement("p");
+    errmsg.innerHTML = json.error;
+    container.appendChild(errmsg);
+  }
+}
+
 populateTileNum();
 populateSliderEvent();
 populateSelectorsEvent();
+addFunctionalityToRadios();
 deactiveScoreButton();
-
-
-// Example of Hand
-// {
-//   winTile: {
-//     man: "",
-//     pin: "",
-//     sou: "4",
-//     honors: ""
-//   },
-//   // Includes the tiles used in melds
-//   tiles: {
-//     man: "22444",
-//     pin: "333567",
-//     sou: "44",
-//     honors: ""
-//   },
-//   doraIndicators: [
-//     doraIndicator: {
-//       man: "4",
-//       pin: "",
-//       sou: "",
-//       honors: ""
-//     },
-//   doraIndicator: {
-//       man: "4",
-//       pin: "",
-//       sou: "",
-//       honors: ""
-//     }
-//   ],
-//   melds: [{
-//     meld: {
-//       // Type values include pon, chi, kan,
-//       type: "",
-//       opened: "",
-//       man: "",
-//       pin: "",
-//       sou: "",
-//       honors: ""
-//     }
-//   }],
-//   options: {
-//                  "East, South, West or North"
-//     playerWind: "East",
-//     roundWind: "East",
-//     isTsumo: false,
-//     isRiichi: false,
-//     isDoubleRiichi: false,
-//     isIppatsu: false,
-//     isRinshan: false,
-//     isChankan: false,
-//     isHaitei: false,
-//     isHoutei: false,
-//     isNagashiMangan: false,
-//     isTenhou: false,
-//     isRenhou: false,
-//     isChiihou: false
-//   }
-// }

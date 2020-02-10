@@ -100,35 +100,38 @@
           </div>
           <div class="additionalOptions">
             <div class="winConditionRadios">
-              <input type="radio" name="winCondition" value="Tsumo">Win by Self Draw
-              <input type="radio" name="winCondition" value="Ron">Win off Discard
+              <input type="radio" name="winCondition" value="isTsumo" checked>Win by Self Draw
+              <input type="radio" name="winCondition" value="isRon">Win off Discard
             </div>
             <div class="seatWindRadios">
               Seat Wind:
-              <input type="radio" name="seatWind" value="East">East
+              <input type="radio" name="seatWind" value="East" checked>East
               <input type="radio" name="seatWind" value="South">South
               <input type="radio" name="seatWind" value="West">West
               <input type="radio" name="seatWind" value="North">North
             </div>
             <div class="roundWindRadios">
               Round Wind:
-              <input type="radio" name="roundWind" value="East">East
+              <input type="radio" name="roundWind" value="East" checked>East
               <input type="radio" name="roundWind" value="South">South
               <input type="radio" name="roundWind" value="West">West
               <input type="radio" name="roundWind" value="North">North
             </div>
             <div class="additionalWinConditions">
-              <input type="checkbox" name="riichi" value="riichi">Riichi
-              <input type="checkbox" name="doubleRiichi" value="doubleRiichi">Double Riichi
-              <input type="checkbox" name="ippatsu" value="ippatsu">One Shot
-              <input type="checkbox" name="chankan" value="chankan">Robbing a Kan
-              <input type="checkbox" name="rinshan" value="rinshin">Deadwall Draw
-              <input type="checkbox" name="lastDraw" value="lastDraw">Last Draw
+              <input type="checkbox" id="riichiCheckBox" value="riichi">Riichi
+              <input type="checkbox" id="doubleRiichiCheckBox" value="doubleRiichi">Double Riichi
+              <br>
+              <input type="checkbox" id="ippatsuCheckBox" value="ippatsu">One Shot
+              <input type="checkbox" id="chankanCheckBox" value="chankan">Robbing a Kan
+              <br>
+              <input type="checkbox" id="rinshanCheckBox" value="rinshan">Deadwall Draw
+              <input type="checkbox" id="lastDrawCheckBox" value="lastDraw">Last Draw
             </div>
           </div>
+          <div id="resultsContianer">
+            <h3>Results</h3>
+          </div>
         </div>
-
-
       </div>
       <div id="footer-placeholder"></div>
     </div>
