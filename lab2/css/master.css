@@ -13,6 +13,14 @@
 
 #searchbtn {
   height: 24px;
+  background-color: #80ccff;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+#searchbtn :hover {
+  background-color: #ddd;
 }
 
 .dropdown {
@@ -49,6 +57,26 @@
   min-width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.footer {
+  position: relative;
+  clear: both;
+  width: 100%;
+  height: 2.5rem;
+  flex-grow: 0;
+  background-color: #343a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Displaying Weather */

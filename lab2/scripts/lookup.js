@@ -1,15 +1,3 @@
-document.getElementById("searchbtn").onclick = function(event) {
-  event.preventDefault();
-  if (selected_city === null) {
-    console.log("No City to search");
-    showToast();
-  } else {
-    console.log("Searching for " + selected_city);
-    getWeather(selected_city);
-    closeDropdown();
-  }
-};
-
 function showToast() {
   $('#noCityToast').toast('show');
 }

@@ -95,6 +95,14 @@ function createBtn(id, city, country) {
   btn.style.border = "none";
   btn.onclick = function(event) {
     selected_city = id;
+    if (selected_city === null) {
+      console.log("No City to search");
+      showToast();
+    } else {
+      console.log("Searching for " + selected_city);
+      getWeather(selected_city);
+      closeDropdown();
+    }
   };
   return btn;
 }
