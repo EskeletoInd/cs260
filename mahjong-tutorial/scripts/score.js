@@ -658,7 +658,7 @@ function addFunctionalityToRadios() {
 document.getElementById("scoreButton").onclick = function(event) {
   event.preventDefault();
   console.log(hand);
-  fetch('http://127.0.0.1:5000/ScoreHand', {
+  fetch('http://mahjongapi.jacobrohde.me/ScoreHand', {
     method: 'post',
     body: JSON.stringify(hand)
   }).then((response) => {
