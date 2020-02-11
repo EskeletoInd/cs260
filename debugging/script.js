@@ -6,22 +6,22 @@ function onClick(e) {
   let type = s.options[s.selectedIndex].value;
 
   // check if number is empty
-  if (number === "") {
+  if (number.trim() === "") {
     number = "random";
   }
 
   // setup URL
-  let url = "http://numberapi.com/" + number + "/" + "type" + "?json";
+  let url = "http://numbersapi.com/" + number + "/" + type + "?json";
   // call API
   fetch(url)
-    .then(function(response) {
+    .then((response) => {
       // make sure the request was successful
       if (response.status != 200) {
         return {
           text: "Error calling the Numbers API service: " + response.statusText
         }
       }
-      return response.json();
+      return(response.json());
     }).then(function(json) {
       // update DOM with response
       updateResult(json.text);
