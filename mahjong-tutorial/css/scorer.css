@@ -43,12 +43,16 @@ button {
   padding-top: 10px;
 }
 
-.handContainer, .handCalledContainer {
+.handInHand, .handCalledContainer {
   padding-top: 40px;
 }
 
 .handCalledContainer {
   margin-left: 10px;
+}
+
+#currentDora {
+  padding-left: 40px;
 }
 
 .hand {
@@ -111,3 +115,31 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /* End Toggle Button Styling */
+
+.inputContianer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tileAddingOptions {
+  padding-left: 75px;
+}
+
+#resultsContianer {
+  min-height: 250px;
+  padding-left: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+.additionalOptions {
+  padding-left: 60px;
+}
+
+.additionalOptions > div {
+  padding-bottom: 12px;
+}
