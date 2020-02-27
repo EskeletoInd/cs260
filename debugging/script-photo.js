@@ -20,16 +20,16 @@ function loadPhoto(e) {
   }
   url += "?random=" + random + "&";
   if (grayscale) {
-    url += "?grayscale&"
+    url += "grayscale&"
   }
   if (blur) {
-    url += "?blur=" + blurAmount + "&";
+    url += "blur=" + blurAmount + "&";
   }
   updateImage(url.substring(0, url.length - 1));
 }
 
 function updateImage(url) {
-  document.getElementById('image').textContent = url;
+  document.getElementById('photo').src = url;
 }
 
 document.getElementById('getButton').addEventListener('click', loadPhoto);
