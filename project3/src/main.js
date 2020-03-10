@@ -8,32 +8,29 @@ let data = {
   deckID: null,
   remaining: 0,
   getDeck(numberOfDecks = 1) {
-    return new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=" + numberOfDecks)
+        .then((response) => response.json())
         .then((response) => {
-          return response.json();
-        }).then((response) => {
-          console.log(response);
           this.deckID = response.deck_id;
           this.remaining = response.remaining;
-        }).then(() => resolve())
+          return response.deckID;
+        }).then((deckID) => resolve(deckID))
         .catch((e) => reject(e));
     });
+    return promise;
   },
-  drawCard(count = 1) {
+  async drawCard(count = 1, numberOfDecks = 1) {
     if (this.deckID === null || this.remaining === 0) {
-      return Promise.resolve(this.getDeck().then(Promise.resolve(this._getCard(count))));
-    } else {
-      return Promise.resolve(this._getCard(count));
+      await this.getDeck(numberOfDecks);
     }
+    let promise = await this._getCard(count);
+    return promise;
   },
   _getCard(count) {
-    return new Promise(function(resolve, reject) {
+    let promise = new Promise((resolve, reject) => {
       fetch("https://deckofcardsapi.com/api/deck/" + this.deckID + "/draw/?count=" + count)
-        .then((response) => {
-          response.text().then((text) => console.log(text));
-          response.json()
-        })
+        .then((response) => response.json())
         .then((response) => {
           this.remaining = response.remaining;
           return response.cards;
@@ -41,6 +38,7 @@ let data = {
           resolve(cards);
         }).catch((e) => reject(e));
     });
+    return promise
   },
   reshuffleDeck() {
     fetch("https://deckofcardsapi.com/api/deck/" + this.deckID + "/shuffle/")
