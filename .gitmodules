@@ -1,0 +1,3 @@
+[submodule "lab3b"]
+	path = lab3b
+	url = git@github.com:BYU-CS-260-Winter-2020/lab-3b-grocery-store-EskeletoInd.git
