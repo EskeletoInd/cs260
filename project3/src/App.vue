@@ -2,11 +2,21 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/oldmaid">Old Maid</router-link>
+      <router-link to="/blackjack">Blackjack</router-link>
     </div>
     <router-view/>
+    <div class="footer">
+  <div class="github-url">
+    <a href="https://github.com/EskeletoInd/cs260/tree/master/project3">
+      https://github.com/EskeletoInd/cs260/tree/master/project3
+    </a>
+  </div>
+</div>
   </div>
 </template>
+
+
 
 <style>
 #app {
@@ -28,5 +38,16 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.footer {
+  position: relative;
+  clear: both;
+  width: 100%;
+  height: 2.5rem;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
