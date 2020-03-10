@@ -2,17 +2,17 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/oldmaid">Old Maid</router-link>
+      <router-link to="/oldmaid">Old Maid</router-link> |
       <router-link to="/blackjack">Blackjack</router-link>
     </div>
     <router-view/>
     <div class="footer">
-  <div class="github-url">
-    <a href="https://github.com/EskeletoInd/cs260/tree/master/project3">
-      https://github.com/EskeletoInd/cs260/tree/master/project3
-    </a>
-  </div>
-</div>
+      <div class="github-url">
+        <a href="https://github.com/EskeletoInd/cs260/tree/master/project3">
+          https://github.com/EskeletoInd/cs260/tree/master/project3
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 

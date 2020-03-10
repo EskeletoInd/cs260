@@ -1,19 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>We will be playing some simple card games.</h1>
+    <div class="cardholder">
+
+    </div>
+    <button @click="drawCard()" name="drawCard">Draw a Card</button>
   </div>
 </template>
 
 <script>
-// This will be a landing page for playing games
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      hand: [],
+    }
+  },
+  methods: {
+    drawCard() {
+      let promise = this.$root.$data.drawCard();
+      promise.then((cards) => {
+        for (let i in cards) {
+          this.hand.push(cards[i]);
+        }
+      });
+    }
   }
 }
 </script>

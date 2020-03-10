@@ -8,29 +8,31 @@
 export default {
   data() {
     return {
+      gameover: false,
+      win: false,
       playerHand: [],
       dealerHand: [],
     }
   },
   methods: {
     playerDrawCard() {
-      playerHand.append(drawCard());
-      if (playerHand() > 21) {
+      this.data.playerHand.append(this.$root.methods.drawCard());
+      if (this.computed.playerScore() > 21) {
         // Player Bust!
       }
     },
     playDealer() {
-      while (dealerScore() < 16) {
-        dealerHand.append(drawCard);
+      while (this.computed.dealerScore() < 16) {
+        this.data.dealerHand.append(this.$root.methods.drawCard());
       }
-      scoreGame();
+      this.methods.scoreGame();
     },
     scoreGame() {
-      if (dealerScore() > 21) {
+      if (this.computed.dealerScore() > 21) {
         // Dealer Bust
-      } else if (dealerScore() > playerScore()) {
+      } else if (this.computed.dealerScore() > this.computed.playerScore()) {
         // Dealer Win
-      } else if (dealerScore() === playerScore()) {
+      } else if (this.computed.dealerScore() === this.computed.playerScore()) {
         // Dealer Win by Tie
       } else {
         // Player Win
@@ -43,19 +45,19 @@ export default {
   computed: {
     playerScore() {
       let total = [0];
-      for (let index in playerHand) {
-        let value = playerHand[index].value;
+      for (let index in this.data.playerHand) {
+        let value = this.data.playerHand[index].value;
         if (value === "KING" || value === "QUEEN" || value === "JACK") {
           total.map(x => x + 10);
         } else if (value === "ACE") {
-
+          total.map(x => x + 1);
         } else {
           total.map(x => x += parseInt(value));
         }
       }
       return total;
     },
-    dealerScore() {},
+    dealerScore() {return 0;},
   }
 }
 </script>
