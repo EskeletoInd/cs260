@@ -2,7 +2,22 @@
 <div class="oldmaid">
   <h1>OldMaid</h1>
   <CardViewer :cards="dealerHand"></CardViewer>
-
+  <div class="explanation">
+    <h2>Object of the Game</h2>
+    <p>
+      The goal is to form and discard pairs of cards, and not to be left with the odd card at the end.
+    </p>
+    <h2>The Play</h2>
+    <p>
+      Each player removes all pairs from his hand face down.
+      If a player has three-of-a-kind, they remove only two of those three cards.
+      The dealer then offers their hand, spread out face down, to the player on the left, who draws one card from it.
+      This player discards any pair that may have been formed by the drawn card.
+      The player then offers their own hand to the player on their left.
+      Play proceeds in this way until all cards have been paired except one which cannot be paired - and the player who has that card is the Old Maid!
+      The Odd card out will be the Ace of Spades.
+    </p>
+  </div>
 </div>
 </template>
 

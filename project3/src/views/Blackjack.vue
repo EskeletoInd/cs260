@@ -22,6 +22,19 @@
       <h2>Better Luck Next Time!</h2>
     </div>
   </div>
+  <div class="explanation">
+    <h2>Objective of the Game</h2>
+    <p>Each participant attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21.</p>
+    <h2>Card Values</h2>
+    <p>It is up to each individual player if an ace is worth 1 or 11. Face cards are 10 and any other card is its pip value.</p>
+    <h2>The Dealer's Play</h2>
+    <p>When the dealer has served every player, the dealers face-down card is turned up.
+      If the total is 17 or more, it must stand.
+      If the total is 16 or under, they must take a card.
+      The dealer must continue to take cards until the total is 17 or more, at which point the dealer must stand.
+      If the dealer has an ace, and counting it as 11 would bring the total to 17 or more (but not over 21), the dealer must count the ace as 11 and stand.
+      The dealer's decisions, then, are automatic on all plays, whereas the player always has the option of taking one or more cards.</p>
+  </div>
 </div>
 </template>
 
@@ -149,10 +162,24 @@ export default {
 </script>
 
 <style>
-  .blackjack {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+.blackjack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.playerHand,
+.dealerHand,
+.explanation {
+  width: 75%;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
 </style>

@@ -1,38 +1,43 @@
 <template>
-  <div class="cards">
-    <div class="cardholder" v-for="card in cards" :key="card.code">
-      <img class="card" :src="card.image">
-    </div>
+<div class="cards">
+  <div class="cardholder" v-for="card in cards" :key="card.code">
+    <img class="card" :src="card.image">
   </div>
+</div>
 </template>
 
 <script>
-  export default {
-    props: {
-      cards: Array,
-    },
-  }
+export default {
+  props: {
+    cards: Array,
+  },
+}
 </script>
 
 <style>
-  .cards {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-  }
+.cards {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #1a4a1c;
+  overflow: hidden;
+  border-radius: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
-  .cardholder {
-    margin: 10px;
-    width: 110px;
-  }
+.cardholder {
+  margin: 10px;
+  width: 110px;
+  margin: 0;
+}
 
-  .card {
-    border: 2px solid black;
-    height: 150px;
-    width: 100px;
-    object-fit: fill;
-  }
-
+.card {
+  border: 2px solid #308834;
+  height: 150px;
+  width: 100px;
+  object-fit: fill;
+}
 </style>
