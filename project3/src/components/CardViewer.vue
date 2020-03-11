@@ -18,7 +18,7 @@ export default {
 
 <style>
 .cards {
-  min-width: 100%;
+  min-width: 75%;
   min-height: 158px;
   margin-top: 20px;
   display: flex;

@@ -179,7 +179,7 @@ export default {
 }
 
 .explanation {
-  width: 75%;
+  width: 50%;
 }
 
 h1 {

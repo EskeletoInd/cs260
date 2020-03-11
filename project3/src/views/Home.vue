@@ -1,10 +1,10 @@
 <template>
 <div class="home">
   <h1>We will be playing some simple card games.</h1>
-  <div class="myCards">
-    <CardViewer :cards="this.hand"></CardViewer>
+  <CardViewer :cards="this.hand"></CardViewer>
+  <div class="buttons">
+    <button @click="drawCard()" name="drawCard">Draw a Card</button>
   </div>
-  <button @click="drawCard()" name="drawCard">Draw a Card</button>
   <div class="explanation">
     <h2>Blackjack</h2>
     <p>
@@ -59,7 +59,11 @@ export default {
   margin-bottom: 10px;
 }
 
+.buttons {
+  margin-top: 10px;
+}
+
 .explanation {
-  width: 75%;
+  width: 50%;
 }
 </style>

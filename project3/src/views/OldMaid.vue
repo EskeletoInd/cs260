@@ -156,23 +156,7 @@ export default {
   flex-direction: column;
 }
 
-.cards {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.cardholder {
-  margin: 10px;
-  width: 110px;
-}
-
-.card {
-  border: 2px solid black;
-  height: 150px;
-  width: 100px;
-  object-fit: fill;
+.buttons {
+  margin-top: 10px;
 }
 </style>
