@@ -1,7 +1,8 @@
 <template>
 <div class="cards">
   <div class="cardholder" v-for="card in cards" :key="card.code">
-    <img class="card" :src="card.image">
+    <img v-if="hidden" class="card" src="https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_1024x1024.png?v=1535755695">
+    <img v-else class="card" :src="card.image">
   </div>
 </div>
 </template>
@@ -10,6 +11,7 @@
 export default {
   props: {
     cards: Array,
+    hidden: Boolean,
   },
 }
 </script>

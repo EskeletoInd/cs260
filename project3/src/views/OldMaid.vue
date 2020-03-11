@@ -1,7 +1,18 @@
 <template>
 <div class="oldmaid">
   <h1>OldMaid</h1>
-  <CardViewer :cards="dealerHand"></CardViewer>
+  <h2>Dealer Hand</h2>
+  <CardViewer :cards="dealerHand" :hidden="true"></CardViewer>
+  <h2>Player Hand</h2>
+  <CardViewer :cards="playerHand"></CardViewer>
+  <div class="buttons">
+    <button @click="playerDrawCard()">Draw</button>
+    <button @click="deal()">Reset</button>
+  </div>
+  <div v-if="this.gameover">
+    <h1 v-if="this.win">Congratulations</h1>
+    <h1 v-else>Sorry, Better Luck Next Time</h1>
+  </div>
   <div class="explanation">
     <h2>Object of the Game</h2>
     <p>
@@ -32,27 +43,41 @@ export default {
     return {
       gameover: false,
       win: false,
+      drawLock: false,
       playerHand: [],
       dealerHand: [],
     }
   },
   methods: {
-    removeMatches(hand) {
-      while (true) {
-        for (let i in hand) {
-          for (let j in hand) {
-            if (i !== j && hand[i].code.substr(0, 1) === hand[i].code.substr(0, 1)) {
-              hand.delete(i);
-              hand.delete(i);
-              continue;
-            }
+    getRandom(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    },
+    removeMatch(hand) {
+      for (let i in hand) {
+        for (let j in hand) {
+          if (i !== j && hand[i].code.substr(0, 1) === hand[j].code.substr(0, 1)) {
+            console.log(hand[i].code.substr(0, 1) + " - " + hand[j].code.substr(0, 1))
+            let a = hand[j];
+            hand.splice(i, 1);
+            hand.splice(hand.indexOf(a), 1);
+            return true;
           }
         }
-        break;
+      }
+      return false;
+    },
+    removeMatches(hand) {
+      let foundMatch = true;
+      while (foundMatch) {
+
+        foundMatch = this.removeMatch(hand);
       }
     },
     deal() {
       this.$root.$data.deckID = null;
+      this.gameover = false;
+      this.playerHand = [];
+      this.dealerHand = [];
       let counter = 0;
       this.$root.$data.drawCard(52, 1).then((cards) => {
         for (let i in cards) {
@@ -71,85 +96,54 @@ export default {
       });
     },
     playerDrawCard() {
-      let promise = this.$root.$data.drawCard();
-      promise.then((cards) => {
-        for (let i in cards) {
-          this.playerHand.push(cards[i]);
-        }
-        if (this.playerScore > 21) {
-          this.scoreGame();
-        }
-      })
-    },
-    playDealer() {
-      let promise = this.$root.$data.drawCard(8);
-      promise.then((cards) => {
-        for (let i in cards) {
-          this.dealerHand.push(cards[i]);
-          if (this.dealerScore >= 16) {
-            break;
+      if (!(this.drawLock) && !(this.gameover)) {
+        this.drawLock = true;
+        let rando = this.getRandom(this.dealerHand.length);
+        let card = this.dealerHand[rando];
+        this.dealerHand.splice(rando, 1);
+        this.playerHand.push(card);
+        new Promise((resolve) => {
+          setTimeout(function() {
+            resolve();
+          }, 1000)
+        }).then(() => {
+          this.removeMatches(this.playerHand);
+        }).then(() => {
+          setTimeout(function() {
+            return;
+          }, 1000)
+        }).then(() => {
+          if (this.checkWin()) {
+            this.dealerDrawCard();
           }
-        }
-        this.scoreGame();
-      })
+        })
+      }
     },
+    dealerDrawCard() {
+      let rando = this.getRandom(this.playerHand.length);
+      let card = this.playerHand[rando];
+      this.playerHand.splice(rando, 1);
+      this.dealerHand.push(card);
+      this.removeMatches(this.dealerHand);
+      this.drawLock = false;
+      this.checkWin();
+    },
+    checkWin() {
+      if (this.playerHand.length === 1 && this.dealerHand.length === 0) {
+        this.gameover = true;
+        this.win = false;
+        return false;
+      } else if (this.playerHand.length === 0 && this.dealerHand.length === 1) {
+        this.gameover = true;
+        this.win = true;
+        return false;
+      }
+      return true;
+    }
   },
-  computed: {
-    playerScore() {
-      let ace = false;
-      let total = 0;
-      for (let index in this.playerHand) {
-        let value = this.playerHand[index].value;
-        if (value === "KING" || value === "QUEEN" || value === "JACK") {
-          total += 10;
-        } else if (value === "ACE") {
-          ace = true;
-          total += 1;
-        } else {
-          total += parseInt(value);
-        }
-      }
-      if (ace && total + 10 <= 21) {
-        return total + 10;
-      } else {
-        return total;
-      }
-    },
-    dealerScore() {
-      let ace = false;
-      let total = 0;
-      for (let index in this.dealerHand) {
-        let value = this.dealerHand[index].value;
-        if (value === "KING" || value === "QUEEN" || value === "JACK") {
-          total += 10;
-        } else if (value === "ACE") {
-          ace = true;
-          total += 1;
-        } else {
-          total += parseInt(value);
-        }
-      }
-      if (ace && total + 10 <= 21) {
-        return total + 10;
-      } else {
-        return total;
-      }
-    },
-  },
+  computed: {},
   created: function() {
-    this.$root.$data.deckID = null;
-    let promise = this.$root.$data.drawCard(2, 6);
-    promise.then((cards) => {
-      for (let i in cards) {
-        this.playerHand.push(cards[i]);
-      }
-    })
-    promise = this.$root.$data.drawCard();
-    promise.then((cards) => {
-      for (let i in cards) {
-        this.dealerHand.push(cards[i]);
-      }
-    })
+    this.deal();
   },
 }
 </script>

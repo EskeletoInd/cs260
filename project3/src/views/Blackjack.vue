@@ -170,7 +170,14 @@ export default {
 }
 
 .playerHand,
-.dealerHand,
+.dealerHand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 .explanation {
   width: 75%;
 }
