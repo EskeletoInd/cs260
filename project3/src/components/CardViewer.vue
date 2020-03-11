@@ -16,6 +16,8 @@ export default {
 
 <style>
 .cards {
+  min-width: 100%;
+  min-height: 158px;
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;

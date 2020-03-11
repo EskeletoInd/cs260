@@ -1,7 +1,9 @@
 <template>
 <div class="home">
   <h1>We will be playing some simple card games.</h1>
-  <CardViewer :cards="this.hand"></CardViewer>
+  <div class="myCards">
+    <CardViewer :cards="this.hand"></CardViewer>
+  </div>
   <button @click="drawCard()" name="drawCard">Draw a Card</button>
   <div class="explanation">
     <h2>Blackjack</h2>
@@ -51,9 +53,9 @@ export default {
   flex-direction: column;
 }
 
-.cards {
-  width: 75%;
+.myCards {
   min-height: 158px;
+  min-width: 75%;
   margin-bottom: 10px;
 }
 
