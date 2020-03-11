@@ -56,7 +56,6 @@ export default {
       for (let i in hand) {
         for (let j in hand) {
           if (i !== j && hand[i].code.substr(0, 1) === hand[j].code.substr(0, 1)) {
-            console.log(hand[i].code.substr(0, 1) + " - " + hand[j].code.substr(0, 1))
             let a = hand[j];
             hand.splice(i, 1);
             hand.splice(hand.indexOf(a), 1);
