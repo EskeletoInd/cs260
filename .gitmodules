@@ -4,3 +4,6 @@
 [submodule "nodejs/todo/node-express-vue-todo"]
 	path = nodejs/todo/node-express-vue-todo
 	url = https://github.com/BYU-CS-260/node-express-vue-todo.git
+[submodule "lab4"]
+	path = lab4
+	url = git@github.com:BYU-CS-260-Winter-2020/lab-4-museum-of-ordinary-objects-EskeletoInd.git
