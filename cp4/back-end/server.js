@@ -34,7 +34,6 @@ mongoose.connect('mongodb://localhost:27017/swap', {
 // Upload a photo. Uses the multer middleware for the upload and then returns
 // the path where the photo is stored in the file system.
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
-  console.log("Storing Image")
   // Just a safety check
   if (!req.file) {
     return res.sendStatus(400);
@@ -42,7 +41,6 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
   res.send({
     path: "/images/" + req.file.filename
   });
-  console.log("Stored Image")
 });
 
 // Create a new item in the museum: takes a title and a path to an image.
@@ -107,6 +105,6 @@ async function clear() {
   }
 }
 
-app.listen(3000, () => console.log('Server listening on port 3000!'));
+app.listen(3001, () => console.log('Server listening on port 3001!'));
 
 //clear();
