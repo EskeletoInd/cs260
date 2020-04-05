@@ -1,15 +1,16 @@
 <template>
 <div class="admin">
-  <h1>The Admin Page!</h1>
+  <h1>Welcome to the Admin Page!</h1>
   <div class="heading">
     <div class="circle">1</div>
     <h2>Select a Picture</h2>
   </div>
-  <div v-for="item in this.all_items" v-bind:key="item._id">
-    <button @click="selectItem(item)">
-      <img :src="item.path" alt="">
-    </button>
-  </div>
+  <section class="image-gallery">
+    <div class="image" v-for="item in this.all_items" :key="item._id" @click="selectItem(item)">
+      <img v-if="selected !== null && item._id === selected._id" :src="item.path" class="selected">
+      <img v-else :src="item.path">
+    </div>
+  </section>
   <div class="heading">
     <div class="circle">2</div>
     <h2>Delete a Picture</h2>
@@ -88,24 +89,61 @@ export default {
 </script>
 
 <style scoped>
-/* Suggestions */
-.suggestions {
-  width: 200px;
-  border: 1px solid #ccc;
+/* Masonry */
+.admin {
+  padding-left: 100px;
 }
 
-.suggestion {
-  min-height: 20px;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.suggestion:hover {
-  background-color: #5BDEFF;
-  color: #fff;
+.image-gallery {
+  column-gap: 1.5em;
 }
 
-.image h2 {
-  font-style: italic;
-  font-size: 1em;
+.image {
+  margin: 0 0 0;
+  display: inline-block;
+  flex-grow: 0;
+}
+
+.image img {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+}
+
+.image button {
+  padding: 0;
+  margin: 0;
+}
+
+.selected {
+  border: solid 6px red;
+}
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+  .image-gallery {
+    column-count: 4;
+  }
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .image-gallery {
+    column-count: 3;
+  }
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .image-gallery {
+    column-count: 2;
+  }
 }
 
 .heading {
@@ -117,11 +155,6 @@ export default {
 .heading h2 {
   margin-top: 8px;
   margin-left: 10px;
-}
-
-.add,
-.edit {
-  display: flex;
 }
 
 .circle {
@@ -141,10 +174,6 @@ select,
 button {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
-}
-
-button img {
-  height: 400px;
 }
 
 .form {
