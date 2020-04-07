@@ -7,3 +7,6 @@
 [submodule "lab4"]
 	path = lab4
 	url = git@github.com:BYU-CS-260-Winter-2020/lab-4-museum-of-ordinary-objects-EskeletoInd.git
+[submodule "authenticating-users"]
+	path = authenticating-users
+	url = https://github.com/BYU-CS-260/authenticating-users.git
