@@ -122,7 +122,7 @@ export default {
 }
 
 .selected {
-  border: solid 6px red;
+  border: solid 6px;
 }
 
 /* Masonry on large screens */

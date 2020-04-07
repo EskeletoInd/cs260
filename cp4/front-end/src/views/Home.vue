@@ -32,17 +32,13 @@ export default {
       this.file = event.target.files[0]
     },
     async upload() {
-      try {
-        const formData = new FormData();
-        formData.append('photo', this.file, this.file.name)
-        let r1 = await axios.post('/api/photos', formData);
-        let r2 = await axios.post('/api/items', {
-          path: r1.data.path,
-        });
-        this.received_path = r2.data;
-      } catch (error) {
-        console.log(error)
-      }
+      const formData = new FormData();
+      formData.append('photo', this.file, this.file.name)
+      let r1 = await axios.post('/api/photos', formData);
+      let r2 = await axios.post('/api/items', {
+        path: r1.data.path,
+      });
+      this.received_path = r2.data;
     },
   },
 }
